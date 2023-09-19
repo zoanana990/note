@@ -21,7 +21,9 @@ Here i can only medium or hard subjects, and the target is i need to complete AN
 
 The order is shown as follow:
 - [ ] Binary Tree, try to find the pattern
+- [ ] Depth First Search, backtracking
 - [ ] Dynamic programming
+- [ ] Graph
 
 Reference:
 - [leetcode-master](https://github.com/youngyangyang04/leetcode-master)
