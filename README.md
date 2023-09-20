@@ -27,6 +27,7 @@ The order is shown as follow:
 
 Reference:
 - [leetcode-master](https://github.com/youngyangyang04/leetcode-master)
+- [Blind 75 LeetCode Questions](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
 
 ----
 Open GL, the side project here, will follow the [course](https://www.udemy.com/course/graphics-with-modern-opengl/learn/lecture/10016952?start=15#overview)
