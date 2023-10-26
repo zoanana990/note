@@ -3,10 +3,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
 #include <limits.h>
+#include <inttypes.h>
 
-/* Design
+/* [Design] This is a linux style hash table implementation
  *
  *    struct map                              
  * +--------------+      +--------------+     +-------------+
@@ -44,18 +46,27 @@ struct hash_key
     struct hlist_node node;
 };
 
+enum hash_type
+{
+    HASH_PRINT_STRING = 0,
+    HASH_PRINT_INTEGER,
+    HASH_PRINT_LAST
+};
+
 #define container_of(ptr, type, member)             \
 ({                                                  \
     void *__mptr = (void *) (ptr);                  \
-    ((type *) (__mptr - offsetof(type, member)))    \
+    ((type *) (__mptr - offsetof(type, member)));   \
 })
 
 #define GOLDEN_RATIO_32 0x61C88647
-#define MAP_HASH_SIZE(bita) (1 << (bits))
+#define MAP_HASH_SIZE(bits) (1 << (bits))
 
 struct map *map_init(int size);
-void map_add(struct map *map, void *key);
-void *map_get(struct map *map, void *key, void *data);
-void map_deinit(struct map *map);
+void map_add(struct map *hash_map, void *key, void *data);
+void *map_get(struct map *hash_map, void *key);
+void map_remove(struct map *hash_map,void *key);
+void map_deinit(struct map *hash_map);
+void map_print(struct map *hash_map, enum hash_type type);
 
 #endif
