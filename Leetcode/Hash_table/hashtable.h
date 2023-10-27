@@ -61,7 +61,7 @@ enum hash_type
 
 #define GOLDEN_RATIO_32 0x61C88647
 #define MAP_HASH_SIZE(bits) (1 << (bits))
-
+#define HASH_DATA_SIZE 1024
 struct map *map_init(int size);
 void map_add(struct map *hash_map, void *key, void *data);
 void *map_get(struct map *hash_map, void *key);

@@ -80,6 +80,7 @@ void map_add(struct map *hash_map, void *key, void *data)
         return;
     
     kn = malloc(sizeof(struct hash_key));
+    kn->data = malloc(HASH_DATA_SIZE);
 
     /* initialize kn */
     kn->key = key;
@@ -126,7 +127,7 @@ void map_remove(struct map *hash_map, void *key)
             p->next = NULL;
             p->pprev = NULL;
 
-            //free(kn->data);
+            free(kn->data);
             free(kn);
             return;
         }
@@ -158,7 +159,7 @@ void map_deinit(struct map *hash_map)
             n->next = NULL, n->pprev = NULL;
 
         bail:
-            //free(kn->data);
+            free(kn->data);
             free(kn);
         }
     }
