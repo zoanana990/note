@@ -14,5 +14,7 @@ clean:
 
 check: strlen_perf
 	./strlen_perf
+estimate:
+	leaks ./strlen_perf
 plot:
 	gnuplot -e "set terminal png; set output 'strlen_perf.png'; plot 'strlen_perf.log' using 1:2 with lines title 'strlen linux', 'strlen_perf.log' using 1:3 with lines title 'strlen gcc'"
