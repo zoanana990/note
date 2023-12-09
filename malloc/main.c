@@ -22,6 +22,7 @@ static Header *freep = NULL; /* start of free list */
 
 static void *sbrk(unsigned int nbytes)
 {
+	printf("break\n");
     if (program_break + nbytes >= heaps
         && program_break + nbytes < heaps + MAX_HEAPS) {
         unsigned char *previous_pb = program_break;
