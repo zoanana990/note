@@ -1,11 +1,19 @@
 # Questions
 
 This list is based on [Grind 169](https://www.techinterviewhandbook.org/grind75?weeks=28&hours=6&grouping=topics#)
-
 However, it will be reset when the brower is closed, so this is the place I record the subjects I made
 
+## Interview
+Please watch [this](https://www.youtube.com/watch?v=XKu_SEDAykw&ab_channel=LifeatGoogle) video.
+
+There are several points in the video:
+1. Ask for clarification to the problem, if you don't know about the question, please feel free to ask for clarification
+2. He thought out loud(自言自語) constantly is probably the best thing you can do in the interview, becauase it gives the interviewee the opportunity see your thought process and use that to crourse-correct you more towards the question. This may let you have some new idea
+3. Think everything before you start coding, you might be challenged by the interviwer to think better faster or quicker
+4. Test your solution in real, think about edge case
+
 ## Problem List
-### Array
+### [Array](./array)
 - [ ] [1. Two Sum](https://leetcode.com/problems/two-sum/description/)
 - [ ] [121. Best Time to Bu and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 - [ ] [169. Majority Element](https://leetcode.com/problems/majority-element/description/)
