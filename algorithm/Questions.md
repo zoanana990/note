@@ -14,12 +14,12 @@ There are several points in the video:
 
 ## Problem List
 ### [Array](./array)
-- [ ] [1. Two Sum](https://leetcode.com/problems/two-sum/description/)
-- [ ] [121. Best Time to Bu and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
-- [ ] [169. Majority Element](https://leetcode.com/problems/majority-element/description/)
-- [ ] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/) 
-- [ ] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/)
-- [ ] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
+- [x] [1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01
+- [x] [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01
+- [x] [169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01
+- [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01
+- [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01
+- [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01
 - [ ] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
 - [ ] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
@@ -199,4 +199,3 @@ There are several points in the video:
 - [ ] [48. Rotate Image](https://leetcode.com/problems/rotate-image/description/)
 - [ ] [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
 - [ ] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/description/)
-
