@@ -20,7 +20,7 @@ There are several points in the video:
 - [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01
 - [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01
 - [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01
-- [ ] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
+- [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/), **fail**
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
 - [ ] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
 - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
