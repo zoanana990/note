@@ -162,4 +162,30 @@ public:
 };
 ```
 
-### 
+### interval scheduling
+There is a classic greedy algorithm problem, please calculate how many independent intervals this array has
+```c++
+int interval_schedule(vector<vector<int>>& intervals) {
+    int n = intervals.size();
+    if (n == 0)
+        return 0;
+
+    sort(intervals.begin(), intervals.end(), compare);
+
+    int count = 1;
+    int end = intervals[0][1];
+
+    for(auto i:intervals) {
+        int start = i[0];
+        if(start >= end) {
+            count++;
+            end = i[1];
+        }
+    }
+
+    return count;
+}
+```
+Application: [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
+
+Here is another solution for Leetcode 435

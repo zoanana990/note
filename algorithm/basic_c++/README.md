@@ -24,4 +24,9 @@ int main() {
 ```
 
 
-## 
+## print the vector
+```c++
+for(auto i: intervals)
+    cout << "{" << i[0] << ", " <<  i[1] << "}, ";
+cout << endl;
+```

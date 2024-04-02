@@ -22,7 +22,7 @@ There are several points in the video:
 - [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
 - [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
-- [ ] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
+- [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
 - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
 - [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)
 - [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/) 
@@ -38,7 +38,7 @@ There are several points in the video:
 - [x] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
 - [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
 - [ ] [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
-- [ ] [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
+- [x] [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
 - [ ] [452. Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
 
 ### Binary Search
@@ -52,6 +52,7 @@ There are several points in the video:
 - [ ] [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 
 ### Sliding Window
+> This type of subject are fixed
 - [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
 ### String
