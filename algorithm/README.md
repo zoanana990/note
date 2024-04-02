@@ -20,20 +20,26 @@ There are several points in the video:
 - [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01
 - [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01
 - [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01
-- [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/), **fail**
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
+- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
 - [ ] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
 - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
-- [ ] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
 - [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)
-- [ ] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
 - [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/) 
 - [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
 - [ ] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/)
 - [ ] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
 - [ ] [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
-- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
+
+### [Greedy Algorithm](./greedy/README.md)
+- [x] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
+- [x] [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/description/)
+- [x] [55. Jump Game](https://leetcode.com/problems/jump-game/description/)
+- [x] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
+- [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
+- [ ] [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
 - [ ] [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
+- [ ] [452. Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
 
 ### Binary Search
 - [ ] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
