@@ -189,3 +189,137 @@ int interval_schedule(vector<vector<int>>& intervals) {
 Application: [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
 
 Here is another solution for Leetcode 435
+
+> we need to let the standard sample be as short as it can
+
+### [Stock problem](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/solutions/4815084/javascript-dp-o-n-solution/)
+
+We need to provide several solutions for this, the first is draft
+```c++
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size(), stock = -1, profit = 0;
+
+        for(int i = 0; i < n; i++) {
+            if(i > 0 && prices[i] > prices[i -1])
+                profit += prices[i] - stock, stock = -1;
+
+            if(i < n - 1 && prices[i] < prices[i + 1])
+                stock = prices[i];
+        }
+
+        return profit;
+    }
+};
+```
+
+There are some logic redundant, it will be optimized as follow:
+```c++
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size(), stock = prices[0], profit = 0;
+
+        for(int i = 1; i < n; i++) {
+            if(prices[i] > prices[i - 1])
+                profit += prices[i] - stock;
+            stock = prices[i];
+        }
+
+        return profit;
+    }
+};
+```
+
+We need to try dynamic programming, what do we remeber here ?
+
+We need to use an array to remember the profit, and the next day profit is equal to profit of yesterday and add the profit today
+```c++
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        // how to use dynamic programming
+        int n = prices.size();
+        vector<int> dp(n, 0);
+
+        for(int i = 1; i < n; i++)
+            dp[i] = dp[i - 1] + max(0, prices[i] - prices[i - 1]);
+        
+        return dp[n-1];
+    }
+};
+```
+
+### split the string
+
+> At least you need to implement a brute force, even it is brute force
+
+```c++
+class Solution {
+public:
+    vector<int> partitionLabels(string s) {
+        vector<int> ans;
+        unordered_map<char, int> map;
+        int n = s.length(), end = 0, start = -1;
+
+        // first step is to record the last position for each character
+        for(int i = 0; i < n; i++)
+            map[s[i]] = i;
+        
+        // do the for loop to find the end position
+        for(int i = 0; i < n; i++) {
+            // find maxima position the character is being!
+            end = max(end, map[s[i]]);
+
+            if(end == i) {
+                // add the solution
+                ans.push_back(end - start);
+                start = end;
+            }
+        }
+
+        return ans;
+    }
+};
+```
+### video stiching
+> start from dynamic programming: TODO
+
+> start from greedy
+```c++
+class Solution {
+public:
+    int videoStitching(vector<vector<int>>& clips, int time) {
+        int count = 1, n = clips.size();
+        sort(clips.begin(), clips.end());
+        vector<int> comp{clips[0][0], clips[0][1]};
+        if(comp[0] != 0)
+            return -1;
+
+        for(int i = 0; i < n; i++) {
+            if(comp[1] >= time)
+                return count;
+            if(comp[1] >= clips[i][0]) {
+                if(comp[1] < clips[i][1]) {
+                    if(comp[0] < clips[i][0]) {
+                        // change compare base
+                        comp[0] = comp[1];
+                        comp[1] = clips[i][1];
+                        count++;
+                    } else {
+                        // only expand
+                        comp[1] = clips[i][1];
+                    }
+                }
+            } else {
+                return -1;
+            }
+        }
+
+        return comp[1] >= time ? count : -1;
+    }
+};
+```
+
+> optimize: TODO

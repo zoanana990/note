@@ -37,9 +37,23 @@ There are several points in the video:
 - [x] [55. Jump Game](https://leetcode.com/problems/jump-game/description/)
 - [x] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
 - [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
-- [ ] [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
+- [x] [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
 - [x] [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
-- [ ] [452. Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
+- [x] [452. Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
+- [x] [763. Partition Labels](https://leetcode.com/problems/partition-labels/description/)
+- [ ] [330. Patching Array](https://leetcode.com/problems/patching-array/description/)
+- [x] [1024. Video Stitching](https://leetcode.com/problems/video-stitching/description/)
+- [ ] [1326. Minimum Number of Taps to Open to Water a Garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/)
+- [ ] [1353. Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/description/)
+- [ ] [1520. Maximum Number of Non-Overlapping Substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/description/)
+
+### Double Pointer
+- [ ] [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
+- [ ] [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)
+- [ ] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
+
+### Prefix Sum
+
 
 ### Binary Search
 - [ ] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
