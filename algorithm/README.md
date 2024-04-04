@@ -20,39 +20,56 @@ There are several points in the video:
 - [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01
 - [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01
 - [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01
-- [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
-- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
-- [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
 - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
 - [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)
 - [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/) 
 - [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
-- [ ] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/)
+- [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail**
 - [ ] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
-- [ ] [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
+
 
 ### [Greedy Algorithm](./greedy/README.md)
 - [x] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
 - [x] [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/description/)
 - [x] [55. Jump Game](https://leetcode.com/problems/jump-game/description/)
 - [x] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
-- [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
+- [x] [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/), **fail**
 - [x] [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
 - [x] [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
 - [x] [452. Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
 - [x] [763. Partition Labels](https://leetcode.com/problems/partition-labels/description/)
-- [ ] [330. Patching Array](https://leetcode.com/problems/patching-array/description/)
+- [x] [330. Patching Array](https://leetcode.com/problems/patching-array/description/), **fail**, similar 1798
 - [x] [1024. Video Stitching](https://leetcode.com/problems/video-stitching/description/)
 - [ ] [1326. Minimum Number of Taps to Open to Water a Garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/)
-- [ ] [1353. Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/description/)
+- [x] [1353. Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/description/), **fail**, priority queue
 - [ ] [1520. Maximum Number of Non-Overlapping Substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/description/)
+- [ ] [1798. Maximum Number of Consecutive Values You Can Make](https://leetcode.com/problems/maximum-number-of-consecutive-values-you-can-make/description/)
 
-### Double Pointer
+### Dynamic Programming
+- [ ] [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
+- [ ] [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/) 
+- [ ] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)
+- [ ] [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)
+- [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
+- [ ] [198. House Robber](https://leetcode.com/problems/house-robber/description/)
+- [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
+- [ ] [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
+- [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
+- [ ] [221. Maximal Square](https://leetcode.com/problems/maximal-square/description/)
+- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
+- [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
+- [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
+
+### Two Pointer
+- [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
+- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
 - [ ] [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
 - [ ] [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)
 - [ ] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
 
 ### Prefix Sum
+- [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/), "prefix sum", **fail**
+- [ ] [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
 
 
 ### Binary Search
@@ -165,20 +182,6 @@ There are several points in the video:
 - [ ] [208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/description/)
 - [ ] [139. Word Break](https://leetcode.com/problems/word-break/description/) 
 - [ ] [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
-
-### Dynamic Programming
-- [ ] [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
-- [ ] [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/) 
-- [ ] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)
-- [ ] [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)
-- [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
-- [ ] [198. House Robber](https://leetcode.com/problems/house-robber/description/)
-- [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
-- [ ] [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
-- [ ] [55. Jump Game](https://leetcode.com/problems/jump-game/description/)
-- [ ] [221. Maximal Square](https://leetcode.com/problems/maximal-square/description/)
-- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
-- [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
 
 ### Binary
 - [ ] [67. Add Binary](https://leetcode.com/problems/add-binary/description/)

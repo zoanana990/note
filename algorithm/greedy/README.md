@@ -9,6 +9,20 @@ Here are a few examples of this greedy nature.
 > Note: Greedy algorithm has no template!!!
 > You can simulate it manually during the interview
 
+## Intervals Question
+Template:
+```
+1. sort
+2. use a compare interval
+3. update it then check coundary condition
+```
+Template 2:
+```
+1. sort
+2. use a record buffer (hashtable, vector and vector is faster)
+3. update the buffer and check boundary
+```
+
 ## [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/submissions/1161302468/)
 ```c++
 class Solution {
@@ -285,6 +299,36 @@ public:
 ```
 ### video stiching
 > start from dynamic programming: TODO
+the `dp` array represent, at time `i`, we need at least `dp[i]` clips
+```c++
+class Solution {
+public:
+    int videoStitching(vector<vector<int>>& clips, int time) {
+        int n = clips.size();
+        if(!time)
+            return 0;
+        if(!n)
+            return -1;
+        vector<int>dp(time+1, INT_MAX);
+        dp[0] = 0;
+        for(int i = 1;i<=time;i++){
+            for(const auto&cur:clips){
+                if(i>=cur[0] && i<=cur[1]){
+
+                    // minima the required clips
+                    dp[i] = min((long)dp[i], (long)dp[cur[0]]+1);
+
+                }
+                printf("dp[%d] = %d, ", i, dp[i]);
+            }
+            printf("\n");
+        }
+
+        // check the dp[time] is INT_MAX, if so, it cannot achieve the target
+        return dp[time] == INT_MAX?-1:dp[time];
+    }
+};
+```
 
 > start from greedy
 ```c++
@@ -321,5 +365,3 @@ public:
     }
 };
 ```
-
-> optimize: TODO
