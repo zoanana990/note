@@ -27,6 +27,37 @@ There are several points in the video:
 - [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail**
 - [ ] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
 
+### Two Pointer
+- [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
+- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
+- [ ] [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
+- [ ] [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)
+- [ ] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
+
+### Sliding Window
+> This type of subject are fixed
+- [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+
+### Prefix Sum
+- [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/), "prefix sum", **fail**
+- [x] [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
+- [x] [1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/description/), can also use two pointers
+- [x] [974. Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/)
+- [x] [1010. Pairs of Songs With Total Durations Divisible by 60](https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/description/)
+- [ ] [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+- [ ] [304. Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/description/)
+- [ ] [363. Max Sum of Rectangle No Larger Than K](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/description/)
+
+### Binary Search
+- [ ] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
+- [ ] [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/) 
+- [ ] [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
+- [ ] [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/description/)
+- [ ] [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)
+- [ ] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+- [ ] [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/)
+- [ ] [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
+
 
 ### [Greedy Algorithm](./greedy/README.md)
 - [x] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
@@ -60,31 +91,6 @@ There are several points in the video:
 - [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 
-### Two Pointer
-- [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
-- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
-- [ ] [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
-- [ ] [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)
-- [ ] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
-
-### Prefix Sum
-- [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/), "prefix sum", **fail**
-- [ ] [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
-
-
-### Binary Search
-- [ ] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
-- [ ] [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/) 
-- [ ] [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
-- [ ] [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/description/)
-- [ ] [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)
-- [ ] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
-- [ ] [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/)
-- [ ] [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
-
-### Sliding Window
-> This type of subject are fixed
-- [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
 ### String
 - [ ] [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
@@ -120,10 +126,11 @@ There are several points in the video:
 - [ ] [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
 
 ### Linked List
-- [ ] [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
-- [ ] [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/) 
+- [x] [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
+- [x] [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/)
+- [x] [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/description/)
 - [ ] [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)
-- [ ] [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/description/)
+- [x] [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/description/)
 - [ ] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/description/)
 - [ ] [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 - [ ] [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
@@ -223,3 +230,11 @@ There are several points in the video:
 - [ ] [48. Rotate Image](https://leetcode.com/problems/rotate-image/description/)
 - [ ] [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
 - [ ] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/description/)
+
+
+### Backtracking
+- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
+- [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/description/)
+
+### Multi-thread
+- [ ] [1915. Number of Wonderful Substrings](https://leetcode.com/problems/number-of-wonderful-substrings/description/)
