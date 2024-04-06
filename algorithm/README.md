@@ -11,6 +11,10 @@ There are several points in the video:
 2. He thought out loud(自言自語) constantly is probably the best thing you can do in the interview, becauase it gives the interviewee the opportunity see your thought process and use that to crourse-correct you more towards the question. This may let you have some new idea
 3. Think everything before you start coding, you might be challenged by the interviwer to think better faster or quicker
 4. Test your solution in real, think about edge case
+5. When we are trying to approach a problem, **we should always start from brute force solution**, even though you have been trained by solving a lot of similar problems previously
+
+### Time complexity
+![](image.png)
 
 ## Problem List
 ### [Array](./array)
@@ -49,15 +53,17 @@ There are several points in the video:
 - [ ] [363. Max Sum of Rectangle No Larger Than K](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/description/)
 
 ### Binary Search
-- [ ] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
-- [ ] [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/) 
-- [ ] [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
-- [ ] [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/description/)
-- [ ] [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)
-- [ ] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+- [x] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
+- [x] [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/description/), **fail**
+- [x] [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/) 
+- [x] [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
+- [x] [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
+- [x] [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/description/)
+- [x] [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)
+- [x] [1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/)
+- [x] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
 - [ ] [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/)
 - [ ] [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
-
 
 ### [Greedy Algorithm](./greedy/README.md)
 - [x] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)

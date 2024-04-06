@@ -490,5 +490,8 @@ for(auto i: intervals)
 cout << endl;
 ```
 
+## lamda expression
+
+
 ## Reference
 - [進階 C++ STL 迭代器](https://hackmd.io/@Greenleaf/advanced_cpp)
