@@ -462,6 +462,9 @@ Find the minima element, sort and reverse
 ```
 
 ## string
+TODO
+
+Please refer [this article](https://tigercosmos.xyz/post/2023/06/c++/std-string-beginner/) first
 ## utility functions
 ### sort and custom sorting function
 ```c++

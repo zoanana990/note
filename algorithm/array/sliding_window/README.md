@@ -249,3 +249,118 @@ public:
 
 ## Difficult subject
 [Leetcode 30. Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/)
+
+Brute force: time limit exceeded
+```c++
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        unordered_map<string, int> need; // used to record the words
+        vector<int> ans; // used to record the index
+        int n = s.size();
+        int m = words[0].size();
+        int k = words.size();
+
+        int times = m * k;
+
+        for(auto w : words)
+            need[w]++;
+
+        for(int i = 0; i < n; i++) {
+            // compare the string
+            int valid = 1;
+            unordered_map<string, int> check(need);
+            for(int j = i; j < i + times; j+=m) {
+                if(check.count(s.substr(j, m)) == 0) {
+                    valid = 0;
+                    break;
+                } else {
+                    check[s.substr(j, m)]--;
+                    if(check[s.substr(j, m)] < 0) {
+                        valid = 0;
+                        break;
+                    }
+                }   
+            }
+
+            if(valid)
+                ans.push_back(i);
+        }
+
+        return ans;
+    }
+};
+```
+
+chatGPT solution, test case pass, but took too long:
+```c++
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        vector<int> result;
+        if (s.empty() || words.empty()) return result;
+
+        unordered_map<string, int> wordCount;
+        for (const string& word : words)
+            wordCount[word]++;
+
+        int wordLength = words[0].length();
+        int totalLength = wordLength * words.size();
+        int n = s.length();
+
+        for (int i = 0; i <= n - totalLength; ++i) {
+            unordered_map<string, int> seen;
+            int j = 0;
+            for (; j < words.size(); ++j) {
+                string word = s.substr(i + j * wordLength, wordLength);
+                if (wordCount.find(word) == wordCount.end()) break;
+                seen[word]++;
+                if (seen[word] > wordCount[word]) break;
+            }
+            if (j == words.size()) result.push_back(i);
+        }
+        return result;
+    }
+};
+```
+
+Optimize it in sliding window:
+refer to [video](https://www.youtube.com/watch?v=n9fYwG3dC_Q&ab_channel=%E5%AE%B0%E7%9B%B8%E5%B0%8F%E7%94%98%E7%BD%97): 
+```c++
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        vector<int> res;
+        unordered_map<string, int> dict;
+        int len = words[0].size();
+        int n = s.length(), m = words.size();
+        for (const string& word : words) {
+            dict[word]++;
+        }
+        for (int i = 0; i < len; i++) {
+            int cnt = 0;
+            unordered_map<string, int> copy = dict;
+            for (int j = i; j <= n - len; j += len) {
+                string cur = s.substr(j, len);
+                copy[cur]--;
+                if (copy[cur] >= 0) {
+                    cnt++;
+                }
+                
+                int pop_start = j - m * len;
+                if (pop_start >= 0) {
+                    string pop_word = s.substr(pop_start, len);
+                    copy[pop_word]++;
+                    if (copy[pop_word] > 0) {
+                        cnt--;
+                    }
+                }
+                if (cnt == m) {
+                    res.push_back(pop_start + len);
+                }
+            }
+        }
+        return res;
+    }
+};
+```
