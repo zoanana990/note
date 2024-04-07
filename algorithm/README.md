@@ -18,18 +18,20 @@ There are several points in the video:
 
 ## Problem List
 ### [Array](./array)
-- [x] [1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01
-- [x] [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01
-- [x] [169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01
-- [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01
-- [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01
-- [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01
-- [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)
-- [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)
-- [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/) 
-- [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
-- [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail**
-- [ ] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
+| Check box| Subjects| difficulty |
+|--| --| -- |
+| - [x] |[1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01| `easy` |
+| - [x] |[121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01 |  `easy` |
+| - [x] |[169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01|  `easy` |
+| - [x] |[217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01|  `easy` |
+| - [x] |[283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01|  `easy` |
+| - [x] |[977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01|  `easy` |
+| - [ ] |[39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)| `medium` |
+| - [ ] |[75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)| `medium` |
+| - [ ] |[134. Gas Station](https://leetcode.com/problems/gas-station/description/) | `medium` |
+| - [ ] |[128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | `medium` |
+| - [x] |[189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail** | `medium` |
+| - [ ] |[525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
 
 ### Two Pointer
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
@@ -41,6 +43,7 @@ There are several points in the video:
 ### Sliding Window
 > This type of subject are fixed
 - [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+- [ ] [30. Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/)
 
 ### Prefix Sum
 - [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/), "prefix sum", **fail**
@@ -52,7 +55,7 @@ There are several points in the video:
 - [ ] [304. Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/description/)
 - [ ] [363. Max Sum of Rectangle No Larger Than K](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/description/)
 
-### Binary Search
+### [Binary Search](./array/binary_search/README.md)
 - [x] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
 - [x] [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/description/), **fail**
 - [x] [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/) 
