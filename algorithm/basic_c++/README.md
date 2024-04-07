@@ -337,6 +337,10 @@ Note about associative array:
 3. cannot use multimap and unordered_multimap, they do not have `[]`
 operator
 
+#### How to find the element to `unordered_map`
+1. `find` function, if the key is exist, we can use the `iterator` to find the element, and return the pointer of the `iterator`
+2. `count` function, return the count in the `unordered_map`, but there is no duplicated element in the `unordered_map`. Thus, the return value is either one or zero.
+
 ### Three container adaptor
 - Provide a restricted interface to meet special needs
 - Implemented with fundamental container classes

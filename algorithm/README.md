@@ -42,8 +42,11 @@ There are several points in the video:
 
 ### Sliding Window
 > This type of subject are fixed
-- [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 - [ ] [30. Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/)
+- [x] [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/)
+- [ ] [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)
+- [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+
 
 ### Prefix Sum
 - [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/), "prefix sum", **fail**
