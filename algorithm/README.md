@@ -31,7 +31,7 @@ There are several points in the video:
 | - [ ] |[134. Gas Station](https://leetcode.com/problems/gas-station/description/) | `medium` |
 | - [ ] |[128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | `medium` |
 | - [x] |[189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail** | `medium` |
-| - [ ] |[525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
+| - [x] |[525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
 
 ### Two Pointer
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
@@ -147,7 +147,7 @@ There are several points in the video:
 - [x] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/description/)
 - [ ] [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 - [ ] [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
-- [ ] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
+- [x] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/), **fail**, need to redo
 - [ ] [328. Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/description/)
 - [ ] [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
 - [x] [148. Sort List](https://leetcode.com/problems/sort-list/description/), **fail**, practice merge sort
