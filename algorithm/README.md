@@ -136,24 +136,25 @@ There are several points in the video:
 ### Hash Table
 - [ ] [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
 - [ ] [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/) 
-- [ ] [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
+- [x] [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
 
 ### Linked List
 - [x] [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 - [x] [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/)
 - [x] [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/description/)
-- [ ] [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)
+- [x] [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)
 - [x] [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/description/)
-- [ ] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/description/)
+- [x] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/description/)
 - [ ] [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 - [ ] [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
 - [ ] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
 - [ ] [328. Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/description/)
 - [ ] [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
-- [ ] [148. Sort List](https://leetcode.com/problems/sort-list/description/)
-- [ ] [143. Reorder List](https://leetcode.com/problems/reorder-list/description/) 
-- [ ] [61. Rotate List](https://leetcode.com/problems/rotate-list/description/)
+- [x] [148. Sort List](https://leetcode.com/problems/sort-list/description/), **fail**, practice merge sort
+- [x] [143. Reorder List](https://leetcode.com/problems/reorder-list/description/) 
+- [x] [61. Rotate List](https://leetcode.com/problems/rotate-list/description/)
 - [ ] [25. Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/description/)
+- [x] [2095. Delete the Middle Node of a Linked List](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/)
 
 ### Binary Tree
 - [ ] [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
