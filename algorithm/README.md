@@ -157,13 +157,13 @@ There are several points in the video:
 - [x] [2095. Delete the Middle Node of a Linked List](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/)
 
 ### Binary Tree
-- [ ] [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
-- [ ] [110. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/description/) 
-- [ ] [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)
-- [ ] [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
-- [ ] [100. Same Tree](https://leetcode.com/problems/same-tree/description/)
-- [ ] [101. Symmetric Tree](https://leetcode.com/problems/symmetric-tree/description/)
-- [ ] [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
+- [x] [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
+- [x] [110. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/description/), **fail**
+- [x] [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)
+- [x] [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
+- [x] [100. Same Tree](https://leetcode.com/problems/same-tree/description/)
+- [x] [101. Symmetric Tree](https://leetcode.com/problems/symmetric-tree/description/)
+- [x] [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
 - [ ] [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
 - [ ] [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/)
 - [ ] [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/description/)
