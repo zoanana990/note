@@ -17,9 +17,6 @@ There are some reasons to use C++ standard library:
 7. Good knowledge of data structures and algorithms
 
 ## Introduction
-### Template
-
-
 ### Containers
 - Sequence containers (array or linker list)
     - vector, deque, list, forward list, array
@@ -48,7 +45,7 @@ Let's see the header file
 ```
 
 ## Sequential Containers
-![alt text](image.png)
+![](image.png)
 ### vector
 Please refer to [vector api](https://cplusplus.com/reference/vector/vector/)
 
@@ -104,6 +101,35 @@ int main()
         cout << *itr << " ";
     cout << endl;
 
+    return 0;
+}
+```
+
+A sample code for how to find an element and delete
+```c++
+// erasing from vector
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main ()
+{
+    std::vector<int> myvector;
+  
+    // set some values (from 1 to 10)
+    for (int i=1; i<=10; i++) myvector.push_back(i);
+  
+    // if it == myvector.end(), it represent not found;
+    auto it = std::find(myvector.begin(), myvector.end(), 3);
+  
+    // erase the 6th element
+    myvector.erase (it);
+  
+    std::cout << "myvector contains:";
+    for (unsigned i=0; i<myvector.size(); ++i)
+      std::cout << ' ' << myvector[i];
+    std::cout << '\n';
+  
     return 0;
 }
 ```
@@ -178,7 +204,7 @@ Associative container,
 1. always sorted, default criteria is `<`
 2. No `push_back()`, `push_front()`
 
-![alt text](image-1.png)
+![](image-1.png)
 ### set
 ```c++
 #include <iostream>
@@ -285,6 +311,12 @@ int main()
     string x = "red";
     cout << x << " is in bucket #" << s.bucket(x) << endl;
     cout << "total bucket #" << s.bucket_count() << endl;
+    
+    s.erase("red");
+    for(auto ss:s)
+        cout << ss << " ";
+    cout << endl;
+
     return 0;
 }
 ```

@@ -18,20 +18,20 @@ There are several points in the video:
 
 ## Problem List
 ### [Array](./array)
-| Check box| Subjects| difficulty |
-|--| --| -- |
-| - [x] |[1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01| `easy` |
-| - [x] |[121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01 |  `easy` |
-| - [x] |[169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01|  `easy` |
-| - [x] |[217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01|  `easy` |
-| - [x] |[283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01|  `easy` |
-| - [x] |[977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01|  `easy` |
-| - [ ] |[39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)| `medium` |
-| - [ ] |[75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)| `medium` |
-| - [ ] |[134. Gas Station](https://leetcode.com/problems/gas-station/description/) | `medium` |
-| - [ ] |[128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | `medium` |
-| - [x] |[189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail** | `medium` |
-| - [x] |[525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
+|  Subjects| difficulty |
+| --| -- |
+| - [x] [1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01| `easy` |
+| - [x] [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01 |  `easy` |
+| - [x] [169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01|  `easy` |
+| - [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01|  `easy` |
+| - [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01|  `easy` |
+| - [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01|  `easy` |
+| - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)| `medium` |
+| - [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)| `medium` |
+| - [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/) | `medium` |
+| - [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | `medium` |
+| - [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail** | `medium` |
+| - [x] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
 
 ### Two Pointer
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
@@ -134,8 +134,8 @@ There are several points in the video:
 - [ ] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)
 
 ### Hash Table
-- [ ] [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
-- [ ] [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/) 
+- [x] [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
+- [x] [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/) 
 - [x] [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
 
 ### Linked List
@@ -147,7 +147,7 @@ There are several points in the video:
 - [x] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/description/)
 - [ ] [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
 - [ ] [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
-- [x] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/), **fail**, need to redo
+- [x] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
 - [ ] [328. Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/description/)
 - [ ] [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)
 - [x] [148. Sort List](https://leetcode.com/problems/sort-list/description/), **fail**, practice merge sort
@@ -204,22 +204,6 @@ There are several points in the video:
 - [ ] [139. Word Break](https://leetcode.com/problems/word-break/description/) 
 - [ ] [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
 
-### Binary
-- [ ] [67. Add Binary](https://leetcode.com/problems/add-binary/description/)
-- [ ] [338. Counting Bits](https://leetcode.com/problems/counting-bits/description/) 
-- [ ] [191. Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/description/)
-- [ ] [136. Single Number](https://leetcode.com/problems/single-number/description/)
-- [ ] [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
-- [ ] [190. Reverse Bits](https://leetcode.com/problems/reverse-bits/description/)
-- [ ] [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/description/)
-
-### Math
-- [ ] [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
-- [ ] [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/) 
-- [ ] [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight/description/)
-- [ ] [50. Pow(x, n)](https://leetcode.com/problems/powx-n/description/)
-- [ ] [7. Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
-
 ### Heap
 - [ ] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
 - [ ] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/) 
@@ -245,10 +229,25 @@ There are several points in the video:
 - [ ] [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
 - [ ] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/description/)
 
-
 ### Backtracking
 - [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
 - [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/description/)
+
+### Binary
+- [ ] [67. Add Binary](https://leetcode.com/problems/add-binary/description/)
+- [ ] [338. Counting Bits](https://leetcode.com/problems/counting-bits/description/) 
+- [ ] [191. Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/description/)
+- [ ] [136. Single Number](https://leetcode.com/problems/single-number/description/)
+- [ ] [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
+- [ ] [190. Reverse Bits](https://leetcode.com/problems/reverse-bits/description/)
+- [ ] [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/description/)
+
+### Math
+- [ ] [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
+- [ ] [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/) 
+- [ ] [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight/description/)
+- [ ] [50. Pow(x, n)](https://leetcode.com/problems/powx-n/description/)
+- [ ] [7. Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)
 
 ### Multi-thread
 - [ ] [1915. Number of Wonderful Substrings](https://leetcode.com/problems/number-of-wonderful-substrings/description/)
