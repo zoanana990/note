@@ -157,29 +157,50 @@ There are several points in the video:
 - [x] [2095. Delete the Middle Node of a Linked List](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/)
 
 ### Binary Tree
-- [x] [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
-- [x] [110. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/description/), **fail**
-- [x] [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)
-- [x] [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
+#### Binary Tree Traversal
+- [x] [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/description/)
+- [x] [144. Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/description/)
+- [x] [145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)
+- [x] [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
+#### Binary Tree Attribute
 - [x] [100. Same Tree](https://leetcode.com/problems/same-tree/description/)
 - [x] [101. Symmetric Tree](https://leetcode.com/problems/symmetric-tree/description/)
-- [x] [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
-- [ ] [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
-- [ ] [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/)
-- [ ] [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/description/)
-- [ ] [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/)
-- [ ] [113. Path Sum II](https://leetcode.com/problems/path-sum-ii/description/)
-- [ ] [662. Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/description/)
+- [x] [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
+- [x] [110. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/description/), **fail**
+- [x] [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)
+- [x] [112. Path Sum](https://leetcode.com/problems/path-sum/description/)
+- [x] [222. Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes/description/)
+- [x] [257. Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/description/), 注意字串 API 的用法
+- [x] [404. Sum of Left Leaves](https://leetcode.com/problems/sum-of-left-leaves/description/)
+- [x] [513. Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value/description/)
+- [x] [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)
+#### Modify Binary Tree
 - [ ] [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)
-- [ ] [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/)
-- [ ] [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
+- [ ] [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/)
+- [ ] [106]
+- [ ] [113. Path Sum II](https://leetcode.com/problems/path-sum-ii/description/)
 - [ ] [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
+- [ ] [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/description/)
+- [x] [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
+- [ ] [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/)
+- [ ] [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
+- [x] [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
+- [ ] [617]
+- [ ] [654]
+- [ ] [662. Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/description/)
+- [ ] [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/)
+
 
 ### Binary Search Tree
-- [ ] [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
-- [ ] [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/) 
 - [ ] [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/description/)
+- [ ] [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/) 
 - [ ] [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
+- [ ] [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
+- [ ] [236]
+- [ ] [501]
+- [ ] [530]
+- [ ] [538]
+- [ ] [700]
 
 ### Graph
 - [ ] [733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
