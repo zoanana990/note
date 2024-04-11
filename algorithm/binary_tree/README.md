@@ -207,10 +207,259 @@ public:
 ### Summary
 ![](image.png)
 
-## Search
-### Backtracking
+## How to construct a tree ?
+subjects: 105, 106, 889
 
-## Example
+This kind of problem is not intuition for freshman, so we need to analyze and practice.
+
+A basic idea for these kind of question.
+1. Use the property of these array.
+    - preorder: the root node is first node
+    - postorder: the root node is the last node in the vector
+    - inorder: we can use this to find the left boundary and right boundary
+    - hashtable: use this to memorize inorder element with its index
+2. Step
+   1. Before we start recursive construct the tree, we need to use hashtable to memorize the inorder vector element with its index
+   2. Recursive Start
+   3. Boundary check, check the boundary is legal, if not, then return `nullptr`
+   4. `malloc` a new tree with `pre_s`
+   5. get the `pre_s` element in inorder index, and we can use this to know left boundary and right boundary
+   6. recursive to sub-tree
+3. Design
+   1. function prototype
+   2. boundary condition
+
+### [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/)
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* build(vector<int>& preorder, vector<int>& inorder, 
+                    unordered_map<int, int>& inorder_map, 
+                    int pre_s, int in_s, int in_e) {
+        // boundary condition
+        if(pre_s > inorder.size() || in_s > in_e)
+            return nullptr;
+        
+        // make a new root node
+        TreeNode *root = new TreeNode(preorder[pre_s]);
+
+        // find the corresponding index in inorder vector
+        int root_i = inorder_map[preorder[pre_s]];
+
+        root->left = build(preorder, inorder, inorder_map, pre_s + 1, in_s, root_i - 1);
+        root->right = build(preorder, inorder, inorder_map, pre_s + root_i - in_s + 1, root_i + 1, in_e);
+
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        // record the value of node and the index of node
+        unordered_map<int, int> inorder_map;
+        int n = inorder.size();
+
+        for(int i = 0; i < n; i++)
+            inorder_map[inorder[i]] = i;
+        
+        return build(preorder, inorder, inorder_map, 0, 0, n - 1);
+    }
+};
+```
+
+In the [889. Construct Binary Tree from Preorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/description/)
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* build(vector<int>& preorder, vector<int>& postorder,
+                    unordered_map<int, int>& post_map, unordered_map<int, int>& pre_map,
+                    int pre_s, int post_s, int post_e) {
+        if(pre_s >= preorder.size() || post_e < 0 || post_s > post_e)
+            return nullptr;
+
+        TreeNode *root = new TreeNode(preorder[pre_s]);
+        if(post_s == post_e)
+            return root;
+        int root_left = post_map[preorder[pre_s + 1]];
+        int pre_right = pre_map[postorder[post_e - 1]];
+
+        root->left = build(preorder, postorder, post_map, pre_map, pre_s + 1, post_s, root_left);
+        root->right = build(preorder, postorder, post_map, pre_map, pre_right, root_left + 1, post_e - 1);
+        return root;
+    }
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        unordered_map<int, int> post_map, pre_map;
+        int n = postorder.size();
+
+        for(int i = 0; i < n; i++)
+            post_map[postorder[i]] = i;
+
+        for(int i = 0; i < n; i++)
+            pre_map[preorder[i]] = i;
+
+        return build(preorder, postorder, post_map, pre_map, 0, 0, n - 1);
+    }
+};
+```
+We can optimize this (**TODO**)
+```c++
+class Solution {
+public:
+    int cur = 0;
+    TreeNode* solve(vector<int>& preorder,int l,int r, unordered_map<int,int> &mp) {
+        if(l > r)
+            return nullptr;
+
+        int node_val = preorder[cur++];
+        TreeNode* node = new TreeNode(node_val);
+
+        if(l == r)
+            return node;
+        
+        if(cur >= preorder.size())
+            return nullptr;
+        
+        int partition = mp[preorder[cur]];
+    
+        node->left = solve(preorder, l, partition, mp);
+        node->right = solve(preorder, partition + 1, r - 1, mp);
+
+        return node;
+    }
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        unordered_map<int,int> mp;
+
+        for(int i = 0;i < postorder.size(); i++)
+            mp[postorder[i]] = i;
+
+        return solve(preorder, 0, preorder.size() - 1, mp);
+    }
+};
+```
+
+### Backtracking
+backtracking is "enumerate". If we want to use backtracking method, we need to consider three problems:
+1. Path: the choice we made
+2. Choice list: which we can choose
+3. Termination condition: when we arrive the bottom of tree, we cannot do any choice
+
+There is a template for backtracking:
+```c++
+vector<int> ans;
+
+vector<int> backtracking(/* path */, /* choices*/) {
+    if(/* termination condition */) {
+        ans.push_back(result);
+        return;
+    }
+
+    for (auto choice : choice lists) {
+        //do some choice
+        backtracking();
+        //cancel the chcoice
+    }
+}
+```
+
+### Example
+[113. Path Sum II](https://leetcode.com/problems/path-sum-ii/description/)
+
+Original one:
+```c++
+class Solution {
+    vector<vector<int>> ans;
+public:
+    void dfs(TreeNode *root, int target, vector<int> path) {
+        if(root == nullptr)
+            return;
+
+        path.push_back(root->val);
+        if(target - root->val == 0 && !root->left && !root->right) { 
+            ans.push_back(path);
+            return;
+        }
+
+        dfs(root->left, target - root->val, path);
+        dfs(root->right, target - root->val, path);
+    }
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        if(root == nullptr)
+            return {};
+        vector<int> path;
+        dfs(root, targetSum, path);
+        return ans;
+    }
+};
+```
+
+Here, we notice that we pass all vector to recursion, this is very inefficient. We can use "cancel the choice" to improve it
+
+That is:
+```diff
+-        if(target - root->val == 0 && !root->left && !root->right) { 
+-            ans.push_back(path);
+-            return;
+-        }
++        if(target - root->val == 0 && !root->left && !root->right) { 
++            ans.push_back(path);
++        } else {
++            ...
++        }
++        path.pop_back();
+```
+
+Code:
+```c++
+class Solution {
+    vector<vector<int>> ans;
+public:
+    void dfs(TreeNode *root, int target, vector<int>& path) {
+        if(root == nullptr)
+            return;
+
+        path.push_back(root->val);
+        if(target - root->val == 0 && !root->left && !root->right) { 
+            ans.push_back(path);
+        } else {
+            dfs(root->left, target - root->val, path);
+            dfs(root->right, target - root->val, path);
+        }
+        path.pop_back();
+    }
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        if(root == nullptr)
+            return {};
+        vector<int> path;
+        dfs(root, targetSum, path);
+        return ans;
+    }
+};
+```
+
+And, we can also use BFS to solve this.
+**TODO**
+
+### Find the ancestor
+
 
 ## Reference
 - [Leetcode刷題學習筆記–Tree Traversal](https://hackmd.io/@meyr543/r1lbVkb-K)
