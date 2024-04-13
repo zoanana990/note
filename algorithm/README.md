@@ -34,11 +34,27 @@ There are several points in the video:
 | - [x] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
 
 ### Two Pointer
-- [ ] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
+- [x] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
 - [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
-- [ ] [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
-- [ ] [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)
+- [x] [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/), google 示範題
 - [ ] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
+
+### Stack
+- [ ] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
+- [ ] [232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/) 
+- [ ] [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/description/)
+- [ ] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
+- [ ] [155. Min Stack](https://leetcode.com/problems/min-stack/description/)
+- [ ] [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
+- [ ] [394. Decode String](https://leetcode.com/problems/decode-string/description/)
+- [ ] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
+- [ ] [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
+- [ ] [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
+- [ ] [224. Basic Calculator](https://leetcode.com/problems/basic-calculator/description/)
+- [ ] [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) 
+- [ ] [895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/description/)
+- [ ] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)
+
 
 ### Sliding Window
 > This type of subject are fixed
@@ -106,7 +122,7 @@ There are several points in the video:
 
 
 ### String
-- [ ] [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
+- [x] [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
 - [ ] [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/description/) 
 - [ ] [409. Longest Palindrome](https://leetcode.com/problems/longest-palindrome/description/)
 - [ ] [14. Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
@@ -116,22 +132,6 @@ There are several points in the video:
 - [ ] [438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/description/)
 - [ ] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)
 - [ ] [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/description/)
-
-### Stack
-- [ ] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
-- [ ] [232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/) 
-- [ ] [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/description/)
-- [ ] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
-- [ ] [155. Min Stack](https://leetcode.com/problems/min-stack/description/)
-- [ ] [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
-- [ ] [394. Decode String](https://leetcode.com/problems/decode-string/description/)
-- [ ] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
-- [ ] [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
-- [ ] [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
-- [ ] [224. Basic Calculator](https://leetcode.com/problems/basic-calculator/description/)
-- [ ] [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) 
-- [ ] [895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/description/)
-- [ ] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)
 
 ### Hash Table
 - [x] [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
@@ -184,24 +184,28 @@ There are several points in the video:
 - [x] [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/description/)
 - [x] [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
 - [x] [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/), **fail**
-- [ ] [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
+- [x] [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
 - [x] [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
-- [ ] [617. Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/description/)
-- [ ] [654. Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/description/)
+- [x] [617. Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/description/)
+- [x] [654. Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/description/)
 - [ ] [662. Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/description/)
 - [ ] [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/)
 
 
 ### Binary Search Tree
-- [ ] [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/description/)
-- [ ] [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/) 
-- [ ] [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
+- [x] [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/description/)
+- [x] [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/) 
+- [x] [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
 - [ ] [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
-- [ ] [236]
-- [ ] [501]
-- [ ] [530]
-- [ ] [538]
-- [ ] [700]
+- [x] [450. Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/description/), **need to implement a pointer remove method**
+- [x] [501. Find Mode in Binary Search Tree](https://leetcode.com/problems/find-mode-in-binary-search-tree/description/)
+- [x] [700. Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/description/)
+- [x] [701. Insert into a Binary Search Tree](https://leetcode.com/problems/insert-into-a-binary-search-tree/description/)
+
+### Trie
+- [ ] [208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/description/)
+- [ ] [139. Word Break](https://leetcode.com/problems/word-break/description/) 
+- [ ] [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
 
 ### Graph
 - [ ] [733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
@@ -220,11 +224,6 @@ There are several points in the video:
 - [ ] [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/)
 - [ ] [212. Word Search II](https://leetcode.com/problems/word-search-ii/description/)
 - [ ] [815. Bus Routes](https://leetcode.com/problems/bus-routes/description/)
-
-### Trie
-- [ ] [208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/description/)
-- [ ] [139. Word Break](https://leetcode.com/problems/word-break/description/) 
-- [ ] [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
 
 ### Heap
 - [ ] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
@@ -276,4 +275,39 @@ There are several points in the video:
 
 
 ## Reference
+- [https://neetcode.io/practice](https://neetcode.io/practice)
 - [2023 台灣 Google 軟體工程師面試心得 — 刷題要刷到什麼程度才有機會通過面試](https://medium.com/yuanchiehcheng/yet-another-google-swe-%E9%9D%A2%E8%A9%A6%E5%BF%83%E5%BE%97-2023-05-18eb13a73b75)
+
+節錄：
+> 1.熟悉基本語法與題型
+> 
+> 像我 C++ 平常工作都沒用上，需要花時間去熟悉 STL libray 的使用以及每個操作的時間複雜度
+> 
+> 基本題型如 array / linked list / sliding window / Dynamic Programing 等先將 150 題刷過一遍
+> 
+> 這一階段大概一題 medium 30 分鐘左右，成功率 70%，其餘 30% 就去看詳解學習
+> 
+> 2.看到主題就想到模板
+> 
+> 接下來進入第二遍刷題，此時看到主題基本就能蠻流暢解出來，同一個主題刷個 5 ~ 10 題基本就能抓出解題的模板 (不是死背)，像是 Binary Search / Sliding Window / BFS / DFS / DP 大概看到就知道哪些資料結構跟流程是必備的，如 BFS 基本就是 queue + visited set → 初始化哪些東西放進 queue → 怎麼找 neighbor + 標記 visited
+> 
+> 這個階段會額外要求 coding style 部分，基本的變數名稱、排版等都要注意，畢竟面試不單純題目寫完，而是要展現自身的工程能力
+> 
+> 此時大概 medium 25 ~ 30 分鐘解完，成功率大概 85%
+> 參加週賽偶爾卡住，但 1e1m 應該沒問題
+> 
+> 3.清晰掌握題目
+> 
+> 接著進入第三遍刷題，這一階段基本上看到題目可以很快展開不同的情境，很直覺的推斷出解題思路，比較具體的展現如 853. Car Fleet、1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit，這兩題我蠻喜歡的，第一次解花蠻多時間，但到這個階段我最一開始把 test case 列完，心中大概就有個解題的雛形
+> 
+> 
+> 這階段會額外練習在題目一開始先用註解釐清所有 test case，並給出完整的解題想法與時間複雜度計算，琢磨後沒問題才動手做，有時候會實作到一半才發現當初想法有漏洞，但就是盡可能修正，如果有不順的狀況額外多刷相似題
+> 建議可以跟朋友互相 mock 會很有幫助
+> 
+> 基本上 medium 25 分鐘左右解完，成功率應該有個 90% 以上，週賽 1e2m 應該 OK，偶爾 medium 卡一下但還算能解出來
+> 
+> 4.面對 medium 有十足的把握
+> 
+> 基本上看過的題目能很快解出來，隨機挑 medium 15 ~ 20 分鐘應該妥妥的
+> 
+> 這個階段我用 mindmap 依據主題與題型整理經典或是相對不熟的題目，我在 coding 關卡前會花一到兩小時快速掃過去，每個主題挑個一兩題練一練維持手感與增強信心，上面的題目都可以 10 分鐘解完

@@ -459,7 +459,89 @@ And, we can also use BFS to solve this.
 **TODO**
 
 ### Find the ancestor
+**TODO**
 
+### Review the order traversal
+Leetcode 297
+
+Solution I, preorder traversal
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Codec {
+public:
+    void dfs(TreeNode *root, string& s) {
+        if(root == nullptr) {
+            if(s.size() > 0)
+               s.append(",#");
+            return;
+        }
+
+        if(s.size() > 0)
+            s.append(",");
+        s.append(to_string(root->val));
+
+        dfs(root->left, s);
+        dfs(root->right, s);
+    }
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        string s;
+        dfs(root, s);
+        return s;
+    }
+
+    TreeNode* build(queue<string>& tokens) {
+        if(tokens.empty())
+            return nullptr;
+        
+        if(tokens.front() == "#") {
+            tokens.pop();
+            return nullptr;
+        }
+        int val = stoi(tokens.front());
+        TreeNode *node = new TreeNode(val);
+        tokens.pop();
+
+        node->left = build(tokens);
+        node->right = build(tokens);
+
+        return node;
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        // first we need to split the data
+        if(data.size() == 0)
+            return nullptr;
+        queue<string> tokens;
+        size_t start = 0, end = 0;
+        while ((end = data.find(",", start)) != std::string::npos) {
+            tokens.push(data.substr(start, end - start));
+            start = end + 1;
+        }
+        tokens.push(data.substr(start));
+
+        return build(tokens);
+    }
+};
+
+// Your Codec object will be instantiated and called as such:
+// Codec ser, deser;
+// TreeNode* ans = deser.deserialize(ser.serialize(root));
+```
+
+Solution II, BFS
+```c++
+
+```
 
 ## Reference
 - [Leetcode刷題學習筆記–Tree Traversal](https://hackmd.io/@meyr543/r1lbVkb-K)

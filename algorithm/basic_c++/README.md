@@ -16,6 +16,27 @@ There are some reasons to use C++ standard library:
 6. A role model of writing library
 7. Good knowledge of data structures and algorithms
 
+## MIN or MAX
+```c++
+CHAR_MIN 
+SCHAR_MAX
+SCHAR_MIN
+UCHAR_MAX
+SHRT_MAX 
+
+SHRT_MIN
+USHRT_MAX
+
+INT_MAX　
+INT_MIN 
+UINT_MAX 
+UINT_MIN 
+
+LONG_MAX
+LONG_MIN 
+ULONG_MAX
+```
+
 ## Introduction
 ### Containers
 - Sequence containers (array or linker list)
@@ -135,6 +156,27 @@ int main ()
 ```
 
 > Notice: `num.end()` dodes not exist, it is null pointer, thus, do not print that
+
+```c++
+#include <iostream>
+#include <algorithm>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    // 使用 std::max_element 找到陣列中的最大值的指向, 搜尋為 [start, end) 左閉右開區間
+    int* maxPtr = std::max_element(arr, arr + n);
+
+    // 使用 std::distance 函數計算指向最大值的指針與陣列開始位置之間的距離，即最大值的索引
+    int maxIndex = std::distance(arr, maxPtr);
+
+    std::cout << "最大值是: " << *maxPtr << "，位於索引 " << maxIndex << std::endl;
+
+    return 0;
+}
+
+```
 
 Properties of vector:
 1. Fast insert/remove at the end: `O(1)`
@@ -532,5 +574,60 @@ cout << endl;
 ## lamda expression
 
 
+## string
+
+### string split
+```c++
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "scott>=tiger>=mushroom";
+    std::string delimiter = ">=";
+    
+    size_t pos = 0;
+    std::string token;
+    while ((pos = s.find(delimiter)) != std::string::npos) {
+        token = s.substr(0, pos);
+        std::cout << token << std::endl;
+        s.erase(0, pos + delimiter.length());
+    }
+    std::cout << s << std::endl;
+
+    return 0;
+}
+```
+or
+```c++
+#include <iostream>
+#include <vector>
+#include <string>
+
+std::vector<std::string> splitString(const std::string& str, char delimiter) {
+    std::vector<std::string> tokens;
+    size_t start = 0, end = 0;
+    while ((end = str.find(delimiter, start)) != std::string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+        start = end + 1;
+    }
+    tokens.push_back(str.substr(start));
+    return tokens;
+}
+
+int main() {
+    std::string str = "hello world how are you";
+    char delimiter = ' ';
+    std::vector<std::string> parts = splitString(str, delimiter);
+    for (const auto& part : parts) {
+        std::cout << part << std::endl;
+    }
+    return 0;
+}
+```
+
+- [C/C++ - String 用法與心得完全攻略](https://www.mropengate.com/2015/07/cc-string-stl.html)
+- [入門看完這一篇就夠了，讓你融會貫通使用 C++ 的 std::string 初級篇！](https://tigercosmos.xyz/post/2023/06/c++/std-string-beginner/)
+- [c++ string的erase删除方法](https://blog.csdn.net/u010472607/article/details/80431604)
 ## Reference
 - [進階 C++ STL 迭代器](https://hackmd.io/@Greenleaf/advanced_cpp)
