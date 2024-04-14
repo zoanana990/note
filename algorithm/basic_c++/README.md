@@ -571,9 +571,62 @@ for(auto i: intervals)
 cout << endl;
 ```
 
-## lamda expression
+## lambda expression
+Refer to [C++11 Lambda Expression 語法教學與範例](https://blog.gtwang.org/programming/lambda-expression-in-c11/)
 
+Some example with C++ STL
+```c++
+#include <iostream>
+#include <utility>
+#include <vector>
+#include <functional>
 
+int main() {
+    // 定義一個存放 std::pair 的向量
+    std::vector<std::pair<int, std::function<int(int)>>> pairVector;
+
+    // 添加幾個元素到向量中，每個元素包含一個整數和一個 lambda 表達式
+    pairVector.push_back(std::make_pair(1, [](int x) { return x * 2; }));
+    pairVector.push_back(std::make_pair(2, [](int x) { return x * x; }));
+    pairVector.push_back(std::make_pair(3, [](int x) { return x + 5; }));
+
+    // 使用每個 pair 中的 lambda 表達式進行計算並印出結果
+    for (const auto& pair : pairVector) {
+        int result = pair.second(pair.first);
+        std::cout << "Result: " << result << std::endl;
+    }
+
+    return 0;
+}
+```
+
+`std::function<int(int)>` 是一種 C++ 中的標準庫類型，表示可以保存並呼叫可調用物件（callable object），這些物件接受一個整數作為參數並返回一個整數。在這個特定的情況下，`std::function<int(int)>` 是一個可以保存函數或函數物件（function object）的類型，這些函數或函數物件接受一個整數作為參數並返回一個整數。
+
+讓我們來看一個簡單的範例，說明 std::function<int(int)> 的使用：
+```c++
+#include <iostream>
+#include <functional>
+
+// 定義一個函數，接受一個整數並返回其平方
+int square(int x) {
+    return x * x;
+}
+
+int main() {
+    // 宣告一個 std::function<int(int)> 對象，並初始化為指向 square 函數的指針
+    std::function<int(int)> func = square;
+
+    // 使用 func 呼叫 square 函數
+    int result = func(5); // 這裡會返回 5 的平方，即 25
+
+    // 印出結果
+    std::cout << "Result: " << result << std::endl;
+
+    return 0;
+}
+```
+
+其實就是類似於 C 語言的函式指標
 ## string
 
 ### string split

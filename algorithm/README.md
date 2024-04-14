@@ -18,34 +18,33 @@ There are several points in the video:
 
 ## Problem List
 ### [Array](./array)
-|  Subjects| difficulty |
-| --| -- |
-| - [x] [1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01| `easy` |
-| - [x] [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01 |  `easy` |
-| - [x] [169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01|  `easy` |
-| - [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01|  `easy` |
-| - [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01|  `easy` |
-| - [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01|  `easy` |
-| - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)| `medium` |
-| - [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/)| `medium` |
-| - [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/) | `medium` |
-| - [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | `medium` |
-| - [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail** | `medium` |
-| - [x] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/) | `medium` |
+- [x] [1. Two Sum](https://leetcode.com/problems/two-sum/description/), date: 2024.04.01, `easy`
+- [x] [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/), date: 2024.04.01, `easy`
+- [x] [169. Majority Element](https://leetcode.com/problems/majority-element/description/), date: 2024.04.01  `easy`
+- [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/), date: 2024.04.01  `easy`
+- [x] [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/), date: 2024.04.01  `easy`
+- [x] [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/), date: 2024.04.01  `easy`
+- [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/) `medium`
+- [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/) `medium`
+- [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/)  `medium`
+- [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)  `medium`
+- [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail**  `medium`
+- [x] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)  `medium`
 
 ### Two Pointer
 - [x] [15. 3Sum](https://leetcode.com/problems/3sum/description/)
 - [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/description/)
 - [x] [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/), google 示範題
-- [ ] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
+- [x] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
 
 ### Stack
-- [ ] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
-- [ ] [232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/) 
-- [ ] [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/description/)
-- [ ] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
-- [ ] [155. Min Stack](https://leetcode.com/problems/min-stack/description/)
-- [ ] [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
+- [x] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
+- [x] [232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/) 
+- [x] [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/description/)
+- [x] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
+- [x] [155. Min Stack](https://leetcode.com/problems/min-stack/description/), **fail**
+- [ ] [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description/)
+- [x] [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
 - [ ] [394. Decode String](https://leetcode.com/problems/decode-string/description/)
 - [ ] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
 - [ ] [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
@@ -53,7 +52,7 @@ There are several points in the video:
 - [ ] [224. Basic Calculator](https://leetcode.com/problems/basic-calculator/description/)
 - [ ] [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) 
 - [ ] [895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/description/)
-- [ ] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)
+- [x] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/), **fail**, `hard`, dynamic programming
 
 
 ### Sliding Window
