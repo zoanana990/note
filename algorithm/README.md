@@ -37,22 +37,32 @@ There are several points in the video:
 - [x] [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/), google 示範題
 - [x] [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/description/)
 
-### Stack
+### Stack, **這一出來都是要人命等級的**
 - [x] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
 - [x] [232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/) 
 - [x] [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/description/)
 - [x] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
 - [x] [155. Min Stack](https://leetcode.com/problems/min-stack/description/), **fail**
-- [ ] [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description/)
+- [x] [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description/)
 - [x] [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
-- [ ] [394. Decode String](https://leetcode.com/problems/decode-string/description/)
-- [ ] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
-- [ ] [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
-- [ ] [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
-- [ ] [224. Basic Calculator](https://leetcode.com/problems/basic-calculator/description/)
+- [x] [394. Decode String](https://leetcode.com/problems/decode-string/description/)
+- [x] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
+- [ ] [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/), CLASSIC, `hard`, brute force, two pointer, dynamic programming
+- [x] [224. Basic Calculator](https://leetcode.com/problems/basic-calculator/description/)
+- [x] [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/), **fail**, `medium`, but it is difficult to me
 - [ ] [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) 
 - [ ] [895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/description/)
 - [x] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/), **fail**, `hard`, dynamic programming
+
+### Heap
+- [ ] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
+- [ ] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/) 
+- [ ] [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)
+- [ ] [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/)
+- [ ] [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
+- [ ] [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/)
+- [ ] [23. Merge k Sorted Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
+- [ ] [632. Smallest Range Covering Elements from K Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
 
 
 ### Sliding Window
@@ -223,16 +233,6 @@ There are several points in the video:
 - [ ] [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/)
 - [ ] [212. Word Search II](https://leetcode.com/problems/word-search-ii/description/)
 - [ ] [815. Bus Routes](https://leetcode.com/problems/bus-routes/description/)
-
-### Heap
-- [ ] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
-- [ ] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/) 
-- [ ] [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)
-- [ ] [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/)
-- [ ] [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
-- [ ] [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/)
-- [ ] [23. Merge k Sorted Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
-- [ ] [632. Smallest Range Covering Elements from K Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
 
 ### Recursion
 - [ ] [46. Permutations](https://leetcode.com/problems/permutations/description/)

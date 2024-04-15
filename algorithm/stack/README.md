@@ -275,3 +275,347 @@ public:
     }
 };
 ```
+
+## Basic Calculator I, II
+### [Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/)
+
+Idea:
+1. How to get the number
+2. The precedence of number
+   
+archithmetic operator -> stack, we need to store previous number
+1. we may need to get the last one
+2. we may need to push the number
+
+summary: Last in first out -> stack
+
+Implementation: get a number
+```c++
+if (isdigit(c)) {
+    num = num * 10 + (c - '0');
+}
+```
+
+Implementation: get the precedence
+We need to walk to the operator then use the last operator
+
+Solution:
+```c++
+class Solution {
+public:
+    int calculate(string s) {
+        int i = 0;
+        return calculateHelper(s, i);
+    }
+    
+private:
+    int calculateHelper(const string& s, int& i) {
+        stack<int> nums;
+        char op = '+';
+        int num = 0;
+        
+        while (i < s.size()) {
+            char c = s[i++];
+            if (isdigit(c)) {
+                num = num * 10 + (c - '0');
+            }
+            if ((!isdigit(c) && c != ' ') || i == s.size()) {
+                if (op == '+') {
+                    nums.push(num);
+                } else if (op == '-') {
+                    nums.push(-num);
+                } else if (op == '*') {
+                    int prev = nums.top();
+                    nums.pop();
+                    nums.push(prev * num);
+                } else if (op == '/') {
+                    int prev = nums.top();
+                    nums.pop();
+                    nums.push(prev / num);
+                }
+                op = c;
+                num = 0;
+            }
+        }
+        
+        int result = 0;
+        while (!nums.empty()) {
+            result += nums.top();
+            nums.pop();
+        }
+        return result;
+    }
+};
+```
+
+Tracing the code:
+```txt
+s = "3+2*2"
+
+initial value: op = '+', num = 0
+
+i == 0: c = 3, i++ -> i = 1, num = 3, op = '+' (default)
+i == 1: c = +, i++ -> i = 2, num = 3,
+        op == '+' -> push num to stack, stack: 3,
+        num = 0, op = '+'
+i == 2: c = 2, i++ -> i = 3, num = 2, op = '+'
+i == 3: c = *, i++ -> i = 4, num = 2,
+        op == '+' -> push num to stack, stack: 3, 2
+        num = 0, op = '*'
+i == 4: c = 2, i++ -> i = 5,
+        i == s.size(), op == '*', prev = stack.top() = 2,
+        stack.pop() -> stack: 3
+        stack.push(num * prev) = stack.push(2 * 2) = stack.push(4)
+        op = 2, num = 0;
+        stack: 3, 4
+
+int result = 0;
+while(!nums.empty())
+    result += stack.top() -> result += 4 -> result = 4
+    stack.pop -> stack: 3
+
+    result += stack.top() -> result += 3 -> result = 7
+    stack.pop -> stack:
+
+return result;
+```
+
+### [Basic Calculator I](https://leetcode.com/problems/basic-calculator/)
+Recursive Method, modify from the above:
+```c++
+class Solution {
+public:
+    int partial_calculate(string s, int& index) {
+        int num = 0, n = s.size(), result = 0;
+        stack<int> string_stack;
+        char op = '+';
+
+        while(index < n) {
+            char c = s[index];
+            index++;
+
+            if(isdigit(c)) {
+                num = num * 10 + (c - '0');
+            }
+
+            if(c == '(') {
+                num = partial_calculate(s, index);
+            }
+                
+            
+            if((!isdigit(c) && c != ' ') || index == n) {
+                if(op == '+')
+                    string_stack.push(num);
+                else if(op == '-')
+                    string_stack.push(-num);
+                
+                if(c == ')')
+                    break;
+                op = c;
+                num = 0;
+            }
+        }
+
+        while(!string_stack.empty()) {
+            result += string_stack.top();
+            string_stack.pop();
+        }
+
+        return result;
+    }
+    int calculate(string s) {
+        int index = 0;
+        return partial_calculate(s, index);
+    }
+};
+```
+
+Iteration: here is brute force
+**TODO**
+
+### [394. Decode String](https://leetcode.com/problems/decode-string/description/)
+
+Recursive Method
+```c++
+class Solution {
+public:
+    string decode(string s, int& index) {
+        string pattern, result;
+        int times = 0, n = s.size();
+
+        while(index < n) {
+            char c = s[index++];
+            if(isdigit(c)) {
+                times = times * 10 + (c - '0');
+            } else if(c == '[') {
+                pattern = decode(s, index);
+                for(int i = 0; i < times; i++)
+                    result.append(pattern);
+                times = 0;
+            } else if(c == ']') {
+                break;
+            } else if(isalpha(c)) {
+                result.push_back(c);
+            }
+        }
+
+        return result;
+    }
+    string decodeString(string s) {
+        int index = 0;
+        return decode(s, index);
+    }
+};
+```
+
+Stack Method
+```c++
+class Solution {
+public:
+    string decodeString(string s) {
+        stack<int> countStack;
+        stack<string> stringStack;
+        string currentString;
+        int k = 0;
+        for (auto ch : s) {
+            if (isdigit(ch)) {
+                k = k * 10 + ch - '0';
+            } else if (ch == '[') {
+                // push the number k to countStack
+                countStack.push(k);
+                // push the currentString to stringStack
+                stringStack.push(currentString);
+                // reset currentString and k
+                currentString = "";
+                k = 0;
+            } else if (ch == ']') {
+                string decodedString = stringStack.top();
+                stringStack.pop();
+                // decode currentK[currentString] by appending currentString k times
+                for (int currentK = countStack.top(); currentK > 0; currentK--) {
+                    decodedString = decodedString + currentString;
+                }
+                countStack.pop();
+                currentString = decodedString;
+            } else {
+                currentString = currentString + ch;
+            }
+        }
+        return currentString;
+    }
+};
+```
+
+### [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
+
+deque solution:
+```c++
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        vector<int> ans;
+        deque<int> store;
+
+        for(auto asteroid: asteroids) {
+            if(store.empty() && asteroid < 0) {
+                ans.push_back(asteroid);
+            } else if(asteroid > 0) {
+                store.push_back(asteroid);
+            } else if(asteroid < 0) {
+                while(!store.empty()) {
+                    int back = store.back();
+                    if(back < abs(asteroid)) {
+                        store.pop_back();
+                        if(store.empty())
+                            ans.push_back(asteroid);
+                    }
+                    else if(back == abs(asteroid)) {
+                        store.pop_back();
+                        break;
+                    } else
+                        break;
+                }
+            }
+        }
+
+        while(!store.empty()) {
+            ans.push_back(store.front());
+            store.pop_front();
+        }
+
+        return ans;
+    }
+};
+```
+
+From huahua
+```c++
+// Author: Huahua
+// Runtime: 22 ms
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        vector<int> s;
+        for (int i = 0 ; i < asteroids.size(); ++i) {
+            const int size = asteroids[i];
+            if (size > 0) { // To right, OK
+                s.push_back(size);
+            } else {
+                // To left
+                if (s.empty() || s.back() < 0) // OK when all are negtives
+                    s.push_back(size);
+                else if (abs(s.back()) <= abs(size)) {
+                    // Top of the stack is going right.
+                    // Its size is less than the current one.
+                    
+                    // The current one still alive!
+                    if (abs(s.back()) < abs(size)) --i;
+                    
+                    s.pop_back(); // Destory the top one moving right
+                }                    
+            }
+        }
+        
+        // s must look like [-s1, -s2, ... , si, sj, ...]
+        return s;
+    }
+};
+
+```
+
+
+But, i need to use stack!!!, the following solution is not mine,
+This is garbage
+```c++
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        stack<int> st;
+
+        for (int asteroid : asteroids) {
+            bool destroyed = false;
+            while (!st.empty() && asteroid < 0 && st.top() > 0) {
+                if (st.top() < -asteroid) {
+                    st.pop();
+                    continue;
+                } else if (st.top() == -asteroid) {
+                    st.pop();
+                }
+                destroyed = true;
+                break;
+            }
+            if (!destroyed) {
+                st.push(asteroid);
+            }
+        }
+
+        vector<int> result(st.size());
+        for (int i = st.size() - 1; i >= 0; --i) {
+            result[i] = st.top();
+            st.pop();
+        }
+
+        return result;
+    }
+};
+```
