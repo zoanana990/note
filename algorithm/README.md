@@ -47,7 +47,7 @@ There are several points in the video:
 - [x] [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/description/)
 - [x] [394. Decode String](https://leetcode.com/problems/decode-string/description/)
 - [x] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/description/)
-- [ ] [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/), CLASSIC, `hard`, brute force, two pointer, dynamic programming
+- [x] [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/), CLASSIC, `hard`, brute force, two pointer, dynamic programming
 - [x] [224. Basic Calculator](https://leetcode.com/problems/basic-calculator/description/)
 - [x] [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/), **fail**, `medium`, but it is difficult to me
 - [ ] [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) 
