@@ -55,11 +55,10 @@ There are several points in the video:
 - [x] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/), **fail**, `hard`, dynamic programming
 
 ### Heap
-- [ ] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
-- [ ] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/) 
-- [ ] [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)
-- [ ] [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/)
-- [ ] [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
+- [x] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
+- [x] [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)
+- [x] [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/), two pointer is better
+- [x] [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 - [ ] [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/)
 - [ ] [23. Merge k Sorted Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
 - [ ] [632. Smallest Range Covering Elements from K Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
@@ -70,7 +69,7 @@ There are several points in the video:
 - [ ] [30. Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/)
 - [x] [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/), **example**
 - [ ] [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)
-- [ ] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+- [x] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 - [x] [567. Permutation in String](https://leetcode.com/problems/permutation-in-string/description/)
 
 
@@ -113,6 +112,7 @@ There are several points in the video:
 - [x] [1353. Maximum Number of Events That Can Be Attended](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/description/), **fail**, priority queue
 - [ ] [1520. Maximum Number of Non-Overlapping Substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/description/)
 - [ ] [1798. Maximum Number of Consecutive Values You Can Make](https://leetcode.com/problems/maximum-number-of-consecutive-values-you-can-make/description/)
+- [x] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/), THIS IS GREEDY, FUCK
 
 ### Dynamic Programming
 - [ ] [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
