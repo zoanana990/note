@@ -115,14 +115,14 @@ There are several points in the video:
 - [x] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/), THIS IS GREEDY, FUCK
 
 ### Dynamic Programming
-- [ ] [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
-- [ ] [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/) 
-- [ ] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)
-- [ ] [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)
+- [x] [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
+- [x] [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/) 
+- [x] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)
+- [x] [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/), **fail**, 背包問題
 - [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
 - [ ] [198. House Robber](https://leetcode.com/problems/house-robber/description/)
-- [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
-- [ ] [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
+- [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/), **ongoing**
+- [x] [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 - [ ] [221. Maximal Square](https://leetcode.com/problems/maximal-square/description/)
 - [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
