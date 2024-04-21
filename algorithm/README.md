@@ -119,13 +119,18 @@ There are several points in the video:
 - [x] [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/) 
 - [x] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)
 - [x] [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/), **fail**, 背包問題
+- [x] [494. Target Sum](https://leetcode.com/problems/target-sum/description/)
+- [x] [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/description/), this should be `hard`, **fail**
 - [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
-- [ ] [198. House Robber](https://leetcode.com/problems/house-robber/description/)
-- [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/), **ongoing**
+- [x] [198. House Robber](https://leetcode.com/problems/house-robber/description/)
+- [x] [213. House Robber II](https://leetcode.com/problems/house-robber-ii/description/)
+- [x] [337. House Robber III](https://leetcode.com/problems/house-robber-iii/description/), dfs + memorization, **fail**
+- [x] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/), **fail**, two array
+- [x] [1567. Maximum Length of Subarray With Positive Product](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/description/)
 - [x] [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 - [ ] [221. Maximal Square](https://leetcode.com/problems/maximal-square/description/)
-- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
+- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/), **fail**
 - [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 
@@ -241,17 +246,14 @@ There are several points in the video:
 - [ ] [31. Next Permutation](https://leetcode.com/problems/next-permutation/description/)
 - [ ] [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description/)
 - [ ] [51. N-Queens](https://leetcode.com/problems/n-queens/description/)
+- [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/description/)
 
-### Matrix 
+### Matrix
 - [ ] [54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/description/)
 - [ ] [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/description/) 
 - [ ] [48. Rotate Image](https://leetcode.com/problems/rotate-image/description/)
 - [ ] [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
 - [ ] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/description/)
-
-### Backtracking
-- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)
-- [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/description/)
 
 ### Binary
 - [ ] [67. Add Binary](https://leetcode.com/problems/add-binary/description/)

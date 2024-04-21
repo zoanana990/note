@@ -16,7 +16,45 @@ Among these, finding the state transition equations is the most challenging. To 
 1. What is the simplest scenario (base case)?
 2. What are the possible states of the problem?
 3. How does each state choice affect the outcome?
-4. How can repetitive subproblems be enumerated correctly?
+4. Define the DP array
+5. How can repetitive subproblems be enumerated correctly?
+6. Define the transfer function
+
+## When dp?
+1. When recursion alone O(2^n) won't work
+2. Counting
+3. Optimization
+
+> Difference between DP and recursion with memorization
+
+What if Dynamic Programming?
+It is a programming method
+
+Requirements:
+1. Optimal Substructure
+   - can be solved optimally by breaking it into subproblems and then recursively finding the optimal solutions to the subproblems
+2. Overlapping subproblems
+   - subproblems are overlapped such that we can compute only once and store the solution for future use
+   - Reduce time complexity
+   - If subproblems do not overlap -> divide and conquer (merge sort)
+3. No-affect effect
+   - The optimal solution of a subproblem will not change when it was used to solve a bigger problem optimally
+
+Method
+- Top-down: recursion with memorization
+- Bottom-up: Dynamic Programming
+
+Some problems:
+- Fibonacci Sequence
+- LCS
+- Knapsack
+- Floyd-Warshall
+- Bellman-Ford
+
+Patterns:
+- leetcode 70 climbing stairs, `easy`
+- Leetcode 62 Unique Paths, `medium`
+- 
 
 ## [Leetcode 300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
 
@@ -225,16 +263,185 @@ public:
 
 TODO: Optimization
 
+### [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
+Brute Force:
+```c++
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int ans = INT_MIN;
+        int n = nums.size();
+       
+        // dp means, the result multiply from i to j
+        vector<vector<int>> dp(n, vector<int>(n, INT_MIN));
+
+        for(int i = 0; i < n; i++) {
+            for(int j = i; j < n; j++) {
+                if(i == j) {
+                    dp[i][j] = nums[i];
+                } else {
+                    dp[i][j] = dp[i][j - 1] * nums[j];
+                }
+                ans = max(ans, dp[i][j]);
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+Result: Time Limit Exceeded
+Optimize, use a array with a pair, one is max and the other is min
+```c++
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int ans = nums[0];
+        int n = nums.size();
+       
+        // dp means, the max or min result ends from nums[i]
+        //           it may be stand from now or inherited from previous element
+        // [0] standards max
+        // [1] standards min
+        vector<vector<int>> dp(n, vector<int>(2, 0));
+
+        dp[0][0] = dp[0][1] = nums[0];
+
+        for(int i = 1; i < n; i++) {
+            // check the number is positive or negaative first
+            vector<int> result = {nums[i] * dp[i - 1][1], nums[i] * dp[i - 1][0], nums[i]};
+            sort(result.begin(), result.end());
+            dp[i][0] = result[2];
+            dp[i][1] = result[0];
+            
+            ans = max(ans, dp[i][0]);
+        }
+
+        return ans;
+    }
+};
+```
+
+Similar Qestion: [1567. Maximum Length of Subarray With Positive Product](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/description/)
+```c++
+class Solution {
+public:
+    int getMaxLen(vector<int>& nums) {
+        int n = nums.size();
+        int ans = nums[0] > 0 ? 1 : 0;
+
+        // [i][0] is length of positive number, [i][1] is length of negative number
+        vector<vector<int>> dp(n, vector<int>(2, 0));
+        dp[0][0] = nums[0] > 0 ? 1 : 0;
+        dp[0][1] = nums[0] < 0 ? 1 : 0;
+
+        for(int i = 1; i < n; i++) {
+            if(nums[i] > 0) {
+                dp[i][0] = dp[i - 1][0] + 1;
+                dp[i][1] = (dp[i - 1][1] ? dp[i - 1][1] + 1 : 0);
+            } else if(nums[i] < 0) {
+                dp[i][1] = dp[i - 1][0] + 1;
+                dp[i][0] = (dp[i - 1][1] ? dp[i - 1][1] + 1 : 0);
+            } else {
+                continue;
+            }
+            ans = max(ans, dp[i][0]);
+        }
+
+        return ans;
+    }
+};
+```
+
+We can improve it by space complexity
+```c++
+int getMaxLen(vector<int>& nums) {
+    int maxLen = 0;
+    int pCount = 0; // count of positive numbers
+    int nCount = 0; // count of negative numbers
+    for (int i = 0; i < nums.size(); ++i) {
+        if (nums[i] > 0) {
+            pCount++;
+            nCount = nCount ? nCount + 1 : 0;
+        } else if (nums[i] < 0){ // nums[i] < 0
+            int temp = pCount;
+            pCount = nCount ? nCount + 1 : 0;
+            nCount = temp + 1;
+        } else {
+            pCount = 0;
+            nCount = 0;
+            continue;
+        }
+        
+        maxLen = max(maxLen, pCount);
+    }
+
+    return maxLen;
+}
+```
+
+### [494. Target Sum](https://leetcode.com/problems/target-sum/description/)
+```c++
+class Solution {
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        const int n = nums.size();
+        const int sum = accumulate(nums.begin(), nums.end(), 0);
+
+        if(sum < target || target < -sum)
+            return 0;
+
+        vector<vector<int>> ways(n + 1, vector<int>(sum + sum + 1, 0));
+
+        ways[0][sum] = 1;
+
+        for(int i = 0; i < n; i++) {
+            for(int j = nums[i]; j < 2 * sum + 1 - nums[i]; j++) {
+                if(ways[i][j]) {
+                    ways[i + 1][j + nums[i]] += ways[i][j];
+                    ways[i + 1][j - nums[i]] += ways[i][j];
+                }
+            }
+        }
+
+        return ways[n][target + sum];
+    }
+};
+```
+
 ### [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)
 
 similar: 494, 416, 518
-
 
 Solution: dp
 ```txt
 dp[i][j]: whether we can sum to j using first i numbers
 dp[i][j]: true if dp[i-1][j-num]
-
 ```
 
-求和要使用 accumulate, 上下界使用 lower_bound
+```c++
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        const int n = nums.size();
+        const int sum = accumulate(nums.begin(), nums.end(), 0);
+        if(sum % 2)
+            return false;
+
+        vector<bool> dp(sum + 1, 0);
+        for(int i = 0; i < n; i++) {
+            vector<bool> tmp(dp.begin(), dp.end());
+            for(int j = 1; j < sum + 1; j++)
+                if(dp[j]) 
+                    tmp[nums[i] + j] = true;
+            swap(dp, tmp);
+            dp[nums[i]] = true;
+            if(dp[sum/2])
+                break;
+        }
+
+        return dp[sum/2];
+    }
+};
+```
