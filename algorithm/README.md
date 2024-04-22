@@ -130,7 +130,7 @@ There are several points in the video:
 - [x] [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 - [ ] [221. Maximal Square](https://leetcode.com/problems/maximal-square/description/)
-- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/), **fail**
+- [x] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/), **fail**
 - [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 

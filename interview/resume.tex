@@ -1,0 +1,185 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{CJKutf8}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \small#3 & \small #4 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{CJK}{UTF8}{bsmi}
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Large Hsin Yu Chen} & Email : {harry021633@gmail.com}\\
+   陳昕佑 & Mobile : (+886) 901-020-267 \\
+\end{tabular*}
+\end{CJK}
+
+%-----------SUMMARY-----------------
+\section{Summary}
+A system software engineer respecting performance and efficiency are brought by seamless integration between software and hardware. 1+ years of experience in IC verification,  platform performance enhancement and memory utilization reduction.
+
+%-----------PROFESSIONAL SKILL-----------------
+\section{Professional skills}
+  \begin{itemize}[leftmargin=*] \itemsep=-3pt 
+    \item {TODO}
+  \end{itemize}
+
+%-----------PROFESSIONAL EXPERIENCE-----------------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {Airoha}{Hsinchu, Taiwan}
+      {System Software Engineer @ Ethernet SoC team}{Feb 2022 -- Present}
+      \resumeItemListStart
+        \resumeItem{FreeRTOS SDK Implementation}
+          {Refine the GPIO and I2C driver, eliminating the database to reduce memory usage approximate 10\%.}
+        \resumeItem{Linux SDK Implementation}
+          {Integrated the I2C and GPIO driver with a standard Linux subsystem, enabling it to utilize Linux-provided APIs. Additionally, I implemented a kernel module ioctl interface to reduce the frequency of user space to kernel space transitions, enhancing the boot-up speed of the program within the SDK 40\%.}
+        \resumeItem{SDK Integration}
+          {Redesigned and consolidated multiple SDK architectures into a single repository for enhanced maintainability and reduced development complexity. Furthermore, I refine the Makefile and redesign the compilation procedure, improving the compilation speed about 7 times.}
+        \resumeItem{IC Verification}
+          {Verify CPU peripherals, including I2C, GPIO, pinmux, CPU Bus.}
+        \resumeItem{Debug Development}
+          {}
+        \resumeItem{System Level Testing Software Development}
+          {Verify CPU peripherals, including I2C, GPIO, pinmux, CPU Bus.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Side Projects}{Taipei, Taiwan}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Vector ISA}
+          {Research on conventional and modern vector architectures, including Cray vector supercomputers, RISC-V Vector Extension and ARM Scalable Vector Extension.}
+        \resumeItem{Vector Microarchitecture}
+          {Design a Cray-like vector core and construct a performance model on it. Evaluate the impact of vector chaining on several processor configurations.}
+        \resumeItem{Code Optimization for Vector}
+          {Research on effective code optimization techniques, such as loop transforms and instruction scheduling, on different vector core configurations.}
+        \resumeItem{Application Profiling and Performance Projection}
+          {Extract vectorizable parts of program by using LLVM, including SPEC2017fp and Darknet, and give an estimated evaluation on our vector core.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Andes Technology Corporation}{Hsinchu, Taiwan}
+      {Summer Intern @ RD/Architecture team}{Jul 2018 -- Aug 2018}
+      \resumeItemListStart
+        \resumeItem{Branch Prediction Performance Modeling}
+          {Collaborating with VLSI team, evaluate the impact of different branch prediction policies on the high-end Andes RISC-V processor.}
+        \resumeItem{Benchmark automatic flow development}
+          {Develop an automatic benchmarking suite, including SPEC2006 and EEMBC, for performance analysis of Andes processors.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National Cheng Kung University}{Tainan, Taiwan}
+      {Master of Mechanical Engineering}{Sep. 2020 -- Aug. 2022}
+    \resumeSubheading
+      {National Central University}{Taoyuan, Taiwan}
+      {Bachelor of Mechanical Engineering}{Sep. 2016 -- Jun. 2020}
+  \resumeSubHeadingListEnd
+
+%-----------OTHER EXPERIENCE-----------------
+%\section{Other Experience}
+%  \resumeSubHeadingListStart
+%    \resumeSubheading
+%      {Speaker of RISC-V Workshop Taiwan}{Hsinchu, Taiwan}
+%      {Topic: "Simulation Evaluation of Chaining Implementation on RISC-V Vector Extension"}{Mar 2019}
+%    \resumeSubheading
+%      {Speaker of COSCUP 2018}{Taipei, Taiwan}
+%      {Topic: "from Binary to Binary: How QEMU Works"}{Aug 2018}
+%    \resumeSubheading
+%      {Speaker of JCConf 2017}{Taipei, Taiwan}
+%      {Topic: "Ahead-of-Time (AOT) compilation in Java 9"}{Sep 2017}
+%  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+% \section{Projects}
+%   \resumeSubHeadingListStart
+%     \resumeSubItem{DCURL}
+%      {This project aims to improve the most time-consuming part of blockchain, \textit{Proof-of-Work}, by exploiting Intel SIMD instructions (SSE and AVX2) on CPU and OpenCL on GPU, achieving average 1.64 speedup.}
+%   \resumeSubHeadingListEnd
+
+%
+%--------PROGRAMMING SKILLS------------
+%\section{Programming Skills}
+%  \resumeSubHeadingListStart
+%    \item{
+%      \textbf{Languages}{: Scala, Python, Javascript, C++, SQL, Java}
+%      \hfill
+%      \textbf{Technologies}{: AWS, Play, React, Kafka, GCE}
+%    }
+%  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
