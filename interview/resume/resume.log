@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.22)  22 APR 2024 23:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.22)  22 APR 2024 23:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -489,9 +489,9 @@ File: c70bsmi.fd 2021/10/16 4.8.5
 File: c70bsmi.fdx 2021/10/16 4.8.5
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 104.
+(Font)              <7> on input line 98.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 104.
+(Font)              <5> on input line 98.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -507,13 +507,20 @@ al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `resume.out' has not changed.
-(rerunfilecheck)             Checksum: 02C13AE54897F0F220B4E46BA322FBB9;468.
+
+
+Package rerunfilecheck Warning: File `resume.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `resume.out':
+(rerunfilecheck)             Before: 02C13AE54897F0F220B4E46BA322FBB9;468
+(rerunfilecheck)             After:  0B8BF591F94D47E4C2A477671F460670;468.
  ) 
 Here is how much of TeX's memory you used:
  11994 strings out of 474116
  184020 string characters out of 5743682
- 1950187 words of memory out of 5000000
+ 1947187 words of memory out of 5000000
  34195 multiletter control sequences out of 15000+600000
  564175 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -527,10 +534,10 @@ e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
 024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on resume.pdf (1 page, 95560 bytes).
+Output written on resume.pdf (1 page, 94835 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  6 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

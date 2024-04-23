@@ -121,7 +121,9 @@ There are several points in the video:
 - [x] [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/), **fail**, 背包問題
 - [x] [494. Target Sum](https://leetcode.com/problems/target-sum/description/)
 - [x] [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/description/), this should be `hard`, **fail**
-- [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
+- [x] [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
+- [x] [63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/description/)
+- [x] [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/description/) 
 - [x] [198. House Robber](https://leetcode.com/problems/house-robber/description/)
 - [x] [213. House Robber II](https://leetcode.com/problems/house-robber-ii/description/)
 - [x] [337. House Robber III](https://leetcode.com/problems/house-robber-iii/description/), dfs + memorization, **fail**
@@ -133,6 +135,7 @@ There are several points in the video:
 - [x] [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/), **fail**
 - [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
+- [x] [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description/), TODO: optimize
 
 
 ### String
@@ -222,9 +225,9 @@ There are several points in the video:
 - [ ] [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
 
 ### Graph
-- [ ] [733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
-- [ ] [542. 01 Matrix](https://leetcode.com/problems/01-matrix/description/) 
-- [ ] [133. Clone Graph](https://leetcode.com/problems/clone-graph/description/)
+- [x] [733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
+- [x] [542. 01 Matrix](https://leetcode.com/problems/01-matrix/description/) 
+- [x] [133. Clone Graph](https://leetcode.com/problems/clone-graph/description/)
 - [ ] [207. Course Schedule](https://leetcode.com/problems/course-schedule/description/)
 - [ ] [200. Number of Islands](https://leetcode.com/problems/number-of-islands/description/)
 - [ ] [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/description/)
@@ -265,8 +268,9 @@ There are several points in the video:
 - [ ] [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/description/)
 
 ### Math
-- [ ] [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
-- [ ] [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/) 
+- [x] [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
+- [x] [12. Integer to Roman](https://leetcode.com/problems/integer-to-roman/description/)
+- [x] [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/) 
 - [ ] [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight/description/)
 - [ ] [50. Pow(x, n)](https://leetcode.com/problems/powx-n/description/)
 - [ ] [7. Reverse Integer](https://leetcode.com/problems/reverse-integer/description/)

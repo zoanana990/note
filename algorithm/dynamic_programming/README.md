@@ -189,6 +189,8 @@ public:
 };
 ```
 
+similarity: 354
+
 ## [Leetcode 322. Coin Change](https://leetcode.com/problems/coin-change/description/)
 
 Brute Force (DFS)
@@ -442,6 +444,76 @@ public:
         }
 
         return dp[sum/2];
+    }
+};
+```
+
+### [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)
+```c++
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<vector<int>> dp(m, vector<int>(n, 1));
+
+        for(int i = 1; i < m; i++) {
+            for(int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+
+        return dp[m - 1][n - 1];
+    }
+};
+```
+
+Optimize:
+
+Every columns at 0 is 1, thus, we can use this property to reduce the dimension of 
+```txt
+1 1 1 1
+1 2 3 4
+1 3 6 10 ...
+```
+
+We only need to care about
+i > 0, dp[i] = dp[i - 1] + dp[i]
+where, dp[i - 1] is above value and dp[i] is previous value.
+
+```c++
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<int> dp(m, 1);
+
+        for(int i = 1; i < n; i++)
+            for(int j = 1; j < m; j++)
+                dp[j] = dp[j - 1] + dp[j];
+
+        return dp[m - 1];
+    }
+};
+```
+
+[leetcode 63]
+```c++
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        const int n = obstacleGrid.size(), m = obstacleGrid[0].size();
+        vector<int> dp(n, 0);
+
+        dp[0] = 1;
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(obstacleGrid[j][i])
+                    dp[j] = 0;
+                else if(j > 0)
+                    dp[j] = dp[j] + dp[j - 1];
+            }
+        }
+
+        return dp[n - 1];
     }
 };
 ```
