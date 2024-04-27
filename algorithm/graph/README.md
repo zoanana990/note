@@ -193,3 +193,97 @@ public:
     }
 };
 ```
+
+## [207. Course Schedule](https://leetcode.com/problems/course-schedule/description/), **fail**
+
+idea:
+1. 先把每一堂課的擋修課有幾堂記錄下來
+2. 先修沒有擋修的課，修完之後把那些需要這堂課的堂數 -1
+3. 如果那些課現在也已經可以修了，就開始修那些課
+
+怎麼修課呢？
+使用 bfs 算法 + queue，queue 是用來看現在有哪些課要修的
+
+當所有能修的課都修完之後檢查一下有沒有課沒有修到，有的話就是 false 擋修無限
+
+Solution: topology sort
+```c++
+class Solution {
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        unordered_map<int, vector<int>> map;
+        vector<int> indegree(numCourses, 0);
+        queue<int> q;
+        
+        for(const auto& prerequisite : prerequisites) {
+            map[prerequisite[1]].push_back(prerequisite[0]);
+            indegree[prerequisite[0]]++;
+        }
+        
+        for(int i = 0; i < numCourses; ++i) {
+            if(indegree[i] == 0) {
+                q.push(i);
+            }
+        }
+        
+        while(!q.empty()) {
+            int curr = q.front();
+            q.pop();
+            numCourses--;
+    
+            for(int next : map[curr]) {
+                if(--indegree[next] == 0) {
+                    q.push(next);
+                }
+            }
+        }
+        
+        return numCourses == 0;
+    }
+};
+```
+
+dfs: make a graph first
+
+```c++
+class Solution {
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        // Build the directed graph
+        vector<vector<int>> graph(numCourses);
+        for (const auto& prerequisite : prerequisites) {
+            graph[prerequisite[1]].push_back(prerequisite[0]);
+        }
+        
+        vector<int> visited(numCourses, 0); // 0: not visited, 1: visiting, 2: visited
+        
+        // Apply DFS for each node
+        for (int i = 0; i < numCourses; ++i) {
+            if (!dfs(i, graph, visited)) {
+                return false; // If there's a cycle, return false
+            }
+        }
+        
+        return true; // No cycle found, return true
+    }
+    
+    // DFS function to check for cycle
+    bool dfs(int course, vector<vector<int>>& graph, vector<int>& visited) {
+        if (visited[course] == 1) return false; // If the current node is being visited, there's a cycle
+        if (visited[course] == 2) return true;  // If the current node has been visited, no cycle
+        
+        visited[course] = 1; // Mark the current node as being visited
+        
+        // DFS on neighbors of the current node
+        for (int neighbor : graph[course]) {
+            if (!dfs(neighbor, graph, visited)) {
+                return false;
+            }
+        }
+        
+        visited[course] = 2; // Mark the current node as visited
+        
+        return true;
+    }
+};
+```

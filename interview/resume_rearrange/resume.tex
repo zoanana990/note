@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{CJK}
+\usepackage{enumitem}
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{CJK}{UTF8}{bsmi}
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Large Hsin Yu Chen} & Email : {harry021633@gmail.com}\\
+   陳昕佑 & Mobile : (+886) 901-020-267 \\
+\end{tabular*}
+\end{CJK}
+
+\section*{Summary}
+A System Software Engineer with over a year of experience at Airoha Inc., specializing in embedded systems development on Linux and FreeRTOS platforms. Focus on driver implementation, debug mechanism development, platform improvement, memory utilization enhancement, and performance optimization.
+
+\section*{Job Responsibilities}
+
+\subsection*{IC Verification:}
+\begin{itemize}[label=$-$]
+    \item Responsible for verifying CPU bus, GPIO, I2C, SCU (System Control Unit), pin-mux, cache, and debug module.
+\end{itemize}
+  
+\subsection*{Refinement of FreeRTOS and Linux SDK:}
+\begin{itemize}[label=$-$]
+    \item Rewrote GPIO and I2C drivers, eliminating legacy functions and databases.
+    \item Developed a kernel module for the Linux platform, enabling client chips to connect to any Linux-compliant master chip, significantly reducing the time for user space to kernel space transitions.
+    \item Redeveloped GPIO and I2C drivers to comply with Linux subsystem standards, enhancing portability and generic characteristics.
+\end{itemize}
+
+\subsection*{Development of FreeRTOS Platform Debug Mechanisms:}
+\begin{itemize}[label=$-$]
+    \item Developed a ring buffer to store error messages in flash for SoCs without UART and transmit them using TFTP.
+    \item Developed an illegal access module to detect illegal memory usage, such as heap overflow and stack overflow, which is normally disabled but can be enabled by modifying the binary file's pattern.
+\end{itemize}
+
+\subsection*{Integration and Enhancement of IC SDKs:}
+\begin{itemize}[label=$-$]
+    \item Integrated all IC SDKs into a single repository, improving compilation speed.
+    \item Redesigned the SDK architecture to merge all SDKs into one package, and redesigned the Makefile compilation process, resulting in a compilation speed seven times faster than before.
+\end{itemize}
+
+\subsection*{Assistance in Automated Testing Program Development:}
+\begin{itemize}[label=$-$]
+    \item Developed automated testing programs to verify code correctness immediately after code submission, ensuring code accuracy.
+\end{itemize}
+
+\subsection*{Development of Factory Production Test Firmware:}
+\begin{itemize}[label=$-$]
+    \item Developed production test software to verify the basic functionality of each chip, particularly focusing on the Ethernet throughput functionality. Analyzed the causes of failure for chips that did not meet expectations (fail IC).
+\end{itemize}
+
+\end{document}

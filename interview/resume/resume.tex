@@ -68,8 +68,7 @@
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%  CV STARTS HERE  %%%%%%%%%
 
 \begin{document}
 
@@ -83,7 +82,7 @@
 
 %-----------SUMMARY-----------------
 \section{Summary}
-A system software engineer respecting performance and efficiency are brought by seamless integration between software and hardware. 1+ years of experience in IC verification,  platform performance enhancement and memory utilization reduction.
+A system software engineer with over an year of experience at Airoha Inc., specializing in embedded systems development on Linux and FreeRTOS platforms. Focus on driver implementation, debug mechanism development, platform improvement, memory utilization enhancement and performance optimization.
 
 %-----------PROFESSIONAL EXPERIENCE-----------------
 \section{Professional Experience}
@@ -95,40 +94,41 @@ A system software engineer respecting performance and efficiency are brought by 
         \resumeItem{FreeRTOS SDK Implementation}
           {Refine the GPIO and I2C driver, eliminating the database to reduce memory usage approximate 10\%.}
         \resumeItem{Linux SDK Implementation}
-          {Integrated the I2C and GPIO driver with a standard Linux subsystem, enabling it to utilize Linux-provided APIs. Additionally, I implemented a kernel module ioctl interface to reduce the frequency of user space to kernel space transitions, enhancing the boot-up speed of the program within the SDK 40\%.}
+          {Re-Implement the I2C and GPIO driver to replace legacy driver and port to standard in-kernel platform subsystem. Additionally, Implement a kernel module ioctl interface to reduce the time cost by user space to kernel space transitions, improving the boot-up speed 40\%.}
         \resumeItem{SDK Integration}
-          {Redesigned and consolidated multiple SDK architectures into a single repository for enhanced maintainability and reduced development complexity. Furthermore, I refine the Makefile and redesign the compilation procedure, improving the compilation speed about 7 times.}
+          {Redesign the SDK architecture to merge all SDKs into one repository, and redesign the Makefile compilation process, improving compilation speed seven times faster than before.}
         \resumeItem{IC Verification}
-          {Verify CPU peripherals, including I2C, GPIO, pinmux, CPU Bus.}
-        \resumeItem{Debug Development}
-          {}
+          {Verify CPU bus, GPIO, I2C, SCU (System Control Unit), pin-mux, cache, and debug module.}
+        \resumeItem{Debug Mechanism Development}
+          {Develop an illegal access module to detect illegal memory usage, such as heap overflow and stack overflow, which is normally disabled but can be enabled by modifying the binary file's pattern.}
         \resumeItem{System Level Testing Software Development}
-          {Verify CPU peripherals, including I2C, GPIO, pinmux, CPU Bus.}
+          {Develop production test software to verify the basic functionality of each chip, particularly focusing on the loopback function, need to check the packet count and the correctness of packet content.}
+        \resumeItem{Auto Test Software Development}
+          {Develop automated testing programs to verify code correctness immediately after code submission, ensuring code accuracy.}
       \resumeItemListEnd
-
-    \resumeSubheading
-      {}{Taipei, Taiwan}
-      {}{}
+      \resumeSubheading
+      {\href{https://hackmd.io/@zoanana990/biRISC-V}{biRISC-V Analyzation}}{Tainan, Taiwan}
+      {Computer Architecture}{January 2022}
       \resumeItemListStart
-        \resumeItem{Vector ISA}
-          {Research on conventional and modern vector architectures, including Cray vector supercomputers, RISC-V Vector Extension and ARM Scalable Vector Extension.}
-        \resumeItem{Vector Microarchitecture}
-          {Design a Cray-like vector core and construct a performance model on it. Evaluate the impact of vector chaining on several processor configurations.}
-        \resumeItem{Code Optimization for Vector}
-          {Research on effective code optimization techniques, such as loop transforms and instruction scheduling, on different vector core configurations.}
-        \resumeItem{Application Profiling and Performance Projection}
-          {Extract vectorizable parts of program by using LLVM, including SPEC2017fp and Darknet, and give an estimated evaluation on our vector core.}
+        \resumeItem{Analyze the data path, control and pipeline in biRISC-V}
+          {TODO}
+        \resumeItem{Analyze instruction cycle}
+          {TODO}
+        \resumeItem{Analyze the dual issue implementation and verify in waveform}
+          {TODO}
+      \resumeItemListEnd
+            \resumeSubheading
+      {Performance Evaluation of Algorithms used in Linux Kernel}{Tainan, Taiwan}
+      {Linux Kernel Internal}{January 2023}
+      \resumeItemListStart
+        \resumeItem{Analyze sort algorithm between heap sort in Linux Kernel and customer quick sort}
+          {Under certain circumstances, the custom sorting algorithm, which combines qsort and insertion sort, demonstrates an average performance improvement of 4 times over heap sort in Linux.}
+        \resumeItem{Analyze string length between Linux Kernel and GCC}
+          {The strlen function provided by GCC exhibits significantly better performance compared to Linux kernel, with a speedup of 6x.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
   
-%-----------PROFESSIONAL SKILL-----------------
-\section{Professional skills}
-  \begin{itemize}[leftmargin=*] \itemsep=-3pt 
-    \item {C/Python programming Language}
-    \item {Makefile}
-  \end{itemize}  
-  
-%-----------EDUCATION-----------------
+%-------------EDUCATION------------------------
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
@@ -138,39 +138,5 @@ A system software engineer respecting performance and efficiency are brought by 
       {National Central University}{Taoyuan, Taiwan}
       {Bachelor of Mechanical Engineering}{Sep. 2016 -- Jun. 2020}
   \resumeSubHeadingListEnd
-
-%-----------OTHER EXPERIENCE-----------------
-%\section{Other Experience}
-%  \resumeSubHeadingListStart
-%    \resumeSubheading
-%      {Speaker of RISC-V Workshop Taiwan}{Hsinchu, Taiwan}
-%      {Topic: "Simulation Evaluation of Chaining Implementation on RISC-V Vector Extension"}{Mar 2019}
-%    \resumeSubheading
-%      {Speaker of COSCUP 2018}{Taipei, Taiwan}
-%      {Topic: "from Binary to Binary: How QEMU Works"}{Aug 2018}
-%    \resumeSubheading
-%      {Speaker of JCConf 2017}{Taipei, Taiwan}
-%      {Topic: "Ahead-of-Time (AOT) compilation in Java 9"}{Sep 2017}
-%  \resumeSubHeadingListEnd
-
-%-----------PROJECTS-----------------
-% \section{Projects}
-%   \resumeSubHeadingListStart
-%     \resumeSubItem{DCURL}
-%      {This project aims to improve the most time-consuming part of blockchain, \textit{Proof-of-Work}, by exploiting Intel SIMD instructions (SSE and AVX2) on CPU and OpenCL on GPU, achieving average 1.64 speedup.}
-%   \resumeSubHeadingListEnd
-
-%
-%--------PROGRAMMING SKILLS------------
-%\section{Programming Skills}
-%  \resumeSubHeadingListStart
-%    \item{
-%      \textbf{Languages}{: Scala, Python, Javascript, C++, SQL, Java}
-%      \hfill
-%      \textbf{Technologies}{: AWS, Play, React, Kafka, GCE}
-%    }
-%  \resumeSubHeadingListEnd
-
-
 %-------------------------------------------
 \end{document}

@@ -54,7 +54,7 @@ There are several points in the video:
 - [ ] [895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/description/)
 - [x] [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/), **fail**, `hard`, dynamic programming
 
-### Heap
+### Heap, **有被有分**
 - [x] [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/description/)
 - [x] [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/description/)
 - [x] [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/), two pointer is better
@@ -83,7 +83,7 @@ There are several points in the video:
 - [ ] [304. Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/description/)
 - [ ] [363. Max Sum of Rectangle No Larger Than K](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/description/)
 
-### [Binary Search](./array/binary_search/README.md)
+### [Binary Search](./array/binary_search/README.md), **這也是要人命的**
 - [x] [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
 - [x] [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/description/), **fail**
 - [x] [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/) 
@@ -96,7 +96,7 @@ There are several points in the video:
 - [ ] [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/)
 - [ ] [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 
-### [Greedy Algorithm](./greedy/README.md)
+### [Greedy Algorithm](./greedy/README.md), **玄學**
 - [x] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
 - [x] [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/description/)
 - [x] [55. Jump Game](https://leetcode.com/problems/jump-game/description/)
@@ -114,7 +114,7 @@ There are several points in the video:
 - [ ] [1798. Maximum Number of Consecutive Values You Can Make](https://leetcode.com/problems/maximum-number-of-consecutive-values-you-can-make/description/)
 - [x] [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/), THIS IS GREEDY, FUCK
 
-### Dynamic Programming
+### Dynamic Programming, **考智商**
 - [x] [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
 - [x] [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/) 
 - [x] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)
@@ -147,15 +147,16 @@ There are several points in the video:
 - [ ] [8. String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/description/)
 - [ ] [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)
 - [ ] [438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/description/)
-- [ ] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)
+- [x] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)
+- [x] [44. Wildcard Matching](https://leetcode.com/problems/wildcard-matching/description/), **fail**
 - [ ] [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/description/)
 
-### Hash Table
+### Hash Table, **每一題都在用**
 - [x] [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
 - [x] [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/) 
 - [x] [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
 
-### Linked List
+### Linked List, **有背有分**
 - [x] [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 - [x] [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/)
 - [x] [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/description/)
@@ -173,7 +174,7 @@ There are several points in the video:
 - [ ] [25. Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/description/)
 - [x] [2095. Delete the Middle Node of a Linked List](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/)
 
-### Binary Tree
+### Binary Tree, **有背有分**
 #### Binary Tree Traversal
 - [x] [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/description/)
 - [x] [144. Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/description/)
@@ -209,7 +210,7 @@ There are several points in the video:
 - [ ] [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/)
 
 
-### Binary Search Tree
+### Binary Search Tree, **有背有分**
 - [x] [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/description/)
 - [x] [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/) 
 - [x] [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
@@ -224,18 +225,18 @@ There are several points in the video:
 - [ ] [139. Word Break](https://leetcode.com/problems/word-break/description/) 
 - [ ] [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
 
-### Graph
+### Graph, **玄學**, with Union Find
 - [x] [733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
 - [x] [542. 01 Matrix](https://leetcode.com/problems/01-matrix/description/) 
 - [x] [133. Clone Graph](https://leetcode.com/problems/clone-graph/description/)
-- [ ] [207. Course Schedule](https://leetcode.com/problems/course-schedule/description/)
+- [x] [207. Course Schedule](https://leetcode.com/problems/course-schedule/description/), **fail**
+- [x] [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/description/), same as 207, TODO: dfs
 - [ ] [200. Number of Islands](https://leetcode.com/problems/number-of-islands/description/)
-- [ ] [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/description/)
+- [x] [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/description/)
 - [ ] [721. Accounts Merge](https://leetcode.com/problems/accounts-merge/description/)
-- [ ] [79. Word Search](https://leetcode.com/problems/word-search/description/)
+- [x] [79. Word Search](https://leetcode.com/problems/word-search/description/), todo: optimization
 - [ ] [310. Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/description/)
 - [ ] [417. Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/description/)
-- [ ] [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/description/) 
 - [ ] [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)
 - [ ] [127. Word Ladder](https://leetcode.com/problems/word-ladder/description/)
 - [ ] [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/)
@@ -251,7 +252,7 @@ There are several points in the video:
 - [ ] [51. N-Queens](https://leetcode.com/problems/n-queens/description/)
 - [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/description/)
 
-### Matrix
+### Matrix, **冥想**
 - [ ] [54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/description/)
 - [ ] [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/description/) 
 - [ ] [48. Rotate Image](https://leetcode.com/problems/rotate-image/description/)
