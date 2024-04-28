@@ -136,6 +136,8 @@ There are several points in the video:
 - [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/description/)
 - [ ] [309. Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 - [x] [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description/), TODO: optimize
+- [x] [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/description/), **fail**
+- [ ] [2029. Stone Game IX](https://leetcode.com/problems/stone-game-ix/description/)
 
 
 ### String

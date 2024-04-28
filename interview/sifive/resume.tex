@@ -82,7 +82,7 @@
 
 %-----------SUMMARY-----------------
 \section{Summary}
-A system software engineer with over an year of experience at Airoha Inc., specializing in embedded systems development on Linux and FreeRTOS platforms. Focus on driver implementation, debug mechanism development, platform improvement, memory utilization enhancement and performance optimization.
+Experienced system software engineer in embedded systems development on Linux and FreeRTOS platforms. Skilled in driver implementation, debug mechanism development, and performance improvement.
 
 %-----------PROFESSIONAL EXPERIENCE-----------------
 \section{Professional Experience}
@@ -92,15 +92,17 @@ A system software engineer with over an year of experience at Airoha Inc., speci
       {System Software Engineer @ Ethernet SoC team}{Feb 2022 -- Present}
       \resumeItemListStart
         \resumeItem{FreeRTOS SDK Implementation}
-          {Refine the GPIO and I2C driver, eliminating the database to reduce memory usage approximate 10\%.}
+          {Refine the GPIO and I2C driver, eliminating the legacy database and functions to reduce memory usage approximate 10\%.}
         \resumeItem{Linux SDK Implementation}
-          {Re-Implement the I2C and GPIO driver to replace legacy driver and port to standard in-kernel platform subsystem. Additionally, Implement a kernel module ioctl interface to reduce the time cost by user space to kernel space transitions, improving the boot-up speed 40\%.}
+          {Revamp I2C and GPIO drivers to replace legacy counterparts, transitioning to standard in-kernel platform subsystem. Additionally, develop a kernel module with ioctl interface to streamline communication between user space and kernel space, resulting in a 40\% improvement in boot-up speed.}
         \resumeItem{SDK Integration}
-          {Redesign the SDK architecture to merge all SDKs into one repository, and redesign the Makefile compilation process, improving compilation speed seven times faster than before.}
+          {Overhauled the SDK architecture by consolidating multiple SDKs into a single repository, and restructured the Makefile compilation process, resulting in a sevenfold increase in compilation speed compared to previous iterations.}
         \resumeItem{IC Verification}
           {Verify CPU bus, GPIO, I2C, SCU (System Control Unit), pin-mux, cache, and debug module.}
         \resumeItem{Debug Mechanism Development}
-          {Develop an illegal access module to detect illegal memory usage, such as heap overflow and stack overflow, which is normally disabled but can be enabled by modifying the binary file's pattern.}
+          {Develop a debug mechanism to monitor access to specific memory regions and provide the corresponding program counter at the time of access.}
+         \resumeItem{Increased image download speed}
+          {Enhanced flash erase sections from 4k bytes to 64k bytes, resulting in a 2x improvement in image download speed.}
         \resumeItem{System Level Testing Software Development}
           {Develop production test software to verify the basic functionality of each chip, particularly focusing on the loopback function, need to check the packet count and the correctness of packet content.}
         \resumeItem{Auto Test Software Development}
@@ -110,21 +112,26 @@ A system software engineer with over an year of experience at Airoha Inc., speci
       {\href{https://hackmd.io/@zoanana990/biRISC-V}{biRISC-V Analyzation}}{Tainan, Taiwan}
       {Computer Architecture}{January 2022}
       \resumeItemListStart
-        \resumeItem{Analyze the data path, control and pipeline in biRISC-V}
-          {TODO}
-        \resumeItem{Analyze instruction cycle}
-          {TODO}
-        \resumeItem{Analyze the dual issue implementation and verify in waveform}
-          {TODO}
+        \resumeItem{Exploration of biRISC-V Processor}
+          {Analyze the datapath, control, and pipeline implementation within the biRISC-V processor code. Utilized Verilator with GTKWave for validation purposes.}
+        \resumeItem{Analyze dual issue pipeline}
+          {Explore and identify conditions for dual-issue execution. Use GTKWave to verify the assumption.}
       \resumeItemListEnd
-            \resumeSubheading
-      {Performance Evaluation of Algorithms used in Linux Kernel}{Tainan, Taiwan}
+      \resumeSubheading
+      {Performance Evaluation of Algorithms used in Linux Kernel}{Hsinchu, Taiwan}
       {Linux Kernel Internal}{January 2023}
       \resumeItemListStart
         \resumeItem{Analyze sort algorithm between heap sort in Linux Kernel and customer quick sort}
           {Under certain circumstances, the custom sorting algorithm, which combines qsort and insertion sort, demonstrates an average performance improvement of 4 times over heap sort in Linux.}
         \resumeItem{Analyze string length between Linux Kernel and GCC}
           {The strlen function provided by GCC exhibits significantly better performance compared to Linux kernel, with a speedup of 6x.}
+      \resumeItemListEnd
+      \resumeSubheading
+      {A RISC-V System Emulator}{Hsinchu, Taiwan}
+      {Contribution on Github}{January 2023}
+      \resumeItemListStart
+        \resumeItem{Improved emulator image loading time}
+          {Implemented mmap for direct mapping of linux images, reducing copying overhead, conserving memory space and enhance the bootup speed.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
   
