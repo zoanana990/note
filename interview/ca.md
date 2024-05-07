@@ -19,9 +19,7 @@
 處理器在沒有 pipeline 的時候只能一個 cycle 執行一個指令，而這一個 cycle 時間非常的長，因為從取指、解碼、執行、存儲、寫回都要自己從頭包到尾。按照處理器的效能來看
 
 效能公式：
-$$
-Performance = \frac{time}{Program} = \frac{Instructions}{Program}\cdot\frac{cycles}{instruction}\cdot\frac{Time}{Cycle}
-$$
+$Performance = \frac{time}{Program} = \frac{Instructions}{Program}\cdot\frac{cycles}{instruction}\cdot\frac{Time}{Cycle}$
 
 注意到這邊的定義：處理器的效能是看一個程式需要執行多少時間，其中這有三個影響的因素
 - 每個 cycle 的時間是多少
@@ -47,9 +45,7 @@ $$
 
 當你的處理器已經管線化之後，你會發現
 
-$$
-Performance = \frac{time}{Program} = \frac{Instructions}{Program}\cdot\frac{cycles}{instruction}\cdot\frac{Time}{Cycle}
-$$
+$Performance = \frac{time}{Program} = \frac{Instructions}{Program}\cdot\frac{cycles}{instruction}\cdot\frac{Time}{Cycle}$
 
 其實你只有降低 $\frac{Time}{Cycle}$ 而已，$\frac{cycles}{instruction}$ 仍然一樣
 
@@ -191,7 +187,8 @@ cache 寫入的策略
 - write back: 需要 dirty bit, 資料先寫道快取，等到快取要被替換的時候一次寫回記憶體
 - write allocate：在 cache write miss 之後把整個 block 帶回 cache line
 - non-write allocate 
-> ==通常 write allocate + write back==
+
+> 通常 write allocate + write back
 
 ### virtual cache and physical cache
 處理器在處理記憶體的時候適用virtual address，經過 tlb 和 mmu 之後可以轉換成 physical address。 tlb 只會用來加速 va 到 pa 的過程。得到 pa 之後每次都從實體記憶體讀資料會很慢，因為直接讀取記憶體很慢也才有了 cache
