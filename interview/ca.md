@@ -240,8 +240,8 @@ VIVT 是不能徹底解決的，但是 VIPT 是可以的
 
 當 p0 把資料寫進 cache 的時候，其他人的資料都變成 invalid
 
-![image](https://hackmd.io/_uploads/BkbuJyuG0.png)
-![image](https://hackmd.io/_uploads/ry5uyyOf0.png)
+![](image.png)
+![](image-1.png)
 
 ### Memory Barrier
 在 arm 的處理器架構中分為三種：
