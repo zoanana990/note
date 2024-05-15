@@ -253,3 +253,20 @@ VIVT 是不能徹底解決的，但是 VIPT 是可以的
 
 ### DMA
 Direct memory access, 另外一個 bus master, 可以用來搬運資料用的，這時候就不需要處理器花費額外的時間處理，但是他也會用到 bus 的頻寬。
+
+## 分析 [biriscv](https://github.com/ultraembedded/biriscv)
+![](birisc-v.png)
+
+### Program Counter
+
+### Instruction Fetch
+
+### Instruction Decode
+
+### Issue
+
+### Execution stage 1
+
+### Execution stage 2
+
+### Write back

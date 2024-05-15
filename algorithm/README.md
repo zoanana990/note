@@ -255,19 +255,19 @@ There are several points in the video:
 - [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/description/)
 
 ### Matrix, **冥想**
-- [ ] [54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/description/)
+- [x] [54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/description/)
 - [ ] [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/description/) 
 - [ ] [48. Rotate Image](https://leetcode.com/problems/rotate-image/description/)
 - [ ] [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
 - [ ] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/description/)
 
 ### Binary
-- [ ] [67. Add Binary](https://leetcode.com/problems/add-binary/description/)
+- [x] [67. Add Binary](https://leetcode.com/problems/add-binary/description/)
 - [ ] [338. Counting Bits](https://leetcode.com/problems/counting-bits/description/) 
-- [ ] [191. Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/description/)
-- [ ] [136. Single Number](https://leetcode.com/problems/single-number/description/)
-- [ ] [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
-- [ ] [190. Reverse Bits](https://leetcode.com/problems/reverse-bits/description/)
+- [x] [191. Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/description/)
+- [x] [136. Single Number](https://leetcode.com/problems/single-number/description/)
+- [x] [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
+- [x] [190. Reverse Bits](https://leetcode.com/problems/reverse-bits/description/)
 - [ ] [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/description/)
 
 ### Math
