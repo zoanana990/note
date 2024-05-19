@@ -611,3 +611,139 @@ private:
 ## Application
 ### [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/description/)
 
+Brute Force: 
+```c++
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        // brute force
+        int m = *max_element(piles.begin(), piles.end());
+
+        for(int i = 1; i <= m; i++) {
+            if(canFinish(piles, i, h))
+                return i;
+        }
+
+        return m;
+    }
+
+    bool canFinish(vector<int> piles, int k, int h) {
+        int n = piles.size();
+
+        for(int p = 0; p < n && h >= 0; h--) {
+            if(piles[p] - k > 0)
+                piles[p] -= k;
+            else
+                p++;
+        }
+        
+        return h >= 0;
+    }
+};
+```
+> Time Limit Exceed
+
+Improve the brute force by using binary search
+```c++
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int r = *max_element(piles.begin(), piles.end());
+        int l = 1;
+
+        while(l <= r) {
+            int m = l + (r - l) / 2;
+            if(canFinish(piles, m, h)) {
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return l;
+    }
+
+    bool canFinish(vector<int> piles, int k, int h) {
+        int n = piles.size();
+
+        for(int p = 0; p < n && h >= 0; h--) {
+            if(piles[p] - k > 0)
+                piles[p] -= k;
+            else
+                p++;
+        }
+        
+        return h >= 0;
+    }
+};
+```
+> Time Limit Exceed
+
+
+Improve the algorithm by using pass by reference
+```c++
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int r = *max_element(piles.begin(), piles.end());
+        int l = 1;
+
+        while(l <= r) {
+            int m = l + (r - l) / 2;
+            if(canFinish(piles, m, h)) {
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return l;
+    }
+
+    bool canFinish(vector<int>& piles, int k, int h) {
+        for(auto p : piles) {
+            int cost = k;
+            h--;
+            while(cost < p) {
+                cost += k;
+                h--;
+            }
+        }
+        
+        return h >= 0;
+    }
+};
+```
+> Time Limit Exceed
+
+
+Improve the timecost calculation
+```c++
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int r = *max_element(piles.begin(), piles.end());
+        int l = 1;
+
+        while(l <= r) {
+            int m = l + (r - l) / 2;
+            if(canFinish(piles, m, h)) {
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return l;
+    }
+
+    bool canFinish(vector<int>& piles, int k, int h) {
+        for(auto p : piles) {
+            h -= p / k + (p % k > 0);
+        }
+        
+        return h >= 0;
+    }
+};
+```
+> accept, 83%

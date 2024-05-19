@@ -1,4 +1,4 @@
-cscope 15 $HOME/CODE/note               0000092617
+cscope 15 $HOME/CODE/note               0000095457
 	@algorithm/graph/310.Minimum_Height_Tree/bfs.cpp
 
 1 
@@ -19859,12 +19859,646 @@ size_t
 °r
 );
 
+	@performance/sve/matrix/main.c
+
+1 
+	~<°dio.h
+>
+
+2 
+	~<°döt.h
+>
+
+3 
+	~<°dlib.h
+>
+
+4 
+	~<°dboﬁ.h
+>
+
+5 
+	~<m©h.h
+>
+
+7 
+	tÊﬂt32_t
+;
+
+9 
+	#BLOCK_SIZE
+ 4
+
+	)
+
+10 
+	#LOOP
+ 10000
+
+	)
+
+12 
+	$m©rix_mu…ùly_c
+(
+Êﬂt32_t
+ *
+A
+, flﬂt32_à*
+B
+, flﬂt32_à*
+C
+, 
+uöt32_t
+ 
+n
+, uöt32_à
+m
+, uöt32_à
+k
+)
+
+14 
+i_idx
+ = 0; i_idx < 
+n
+; i_idx++)
+
+16 
+j_idx
+ = 0; j_idx < 
+m
+; j_idx++)
+
+18 
+C
+[
+n
+ * 
+j_idx
+ + 
+i_idx
+] = 0;
+
+19 
+k_idx
+ = 0; k_idx < 
+k
+; k_idx++)
+
+21 
+C
+[
+n
+ * 
+j_idx
+ + 
+i_idx
+] +
+A
+[¿* 
+k_idx
+ + i_idx] * 
+B
+[
+k
+ * j_idx + k_idx];
+
+25 
+	}
+}
+
+27 
+	$m©rix_mu…ùly_4x4_asm
+(
+Êﬂt32_t
+ *
+A
+, flﬂt32_à*
+B
+, flﬂt32_à*
+C
+)
+
+29 
+asm
+ volatile(
+
+82 : [
+a
+] "r"(
+A
+), [
+b
+] "r"(
+B
+), [
+c
+] "r"(
+C
+)
+
+86 
+	}
+}
+
+88 
+	$¥öt_m©rix
+(
+Êﬂt32_t
+ *
+M
+, 
+uöt32_t
+ 
+cﬁs
+, uöt32_à
+rows
+)
+
+90 
+i
+ = 0; i < 
+rows
+; i++)
+
+92 
+j
+ = 0; j < 
+cﬁs
+; j++)
+
+94 
+	`¥ötf
+("%‡", 
+M
+[
+j
+ * 
+rows
+ + 
+i
+]);
+
+96 
+	`¥ötf
+("\n");
+
+98 
+	`¥ötf
+("\n");
+
+99 
+	}
+}
+
+101 
+	$m©rix_öô_ønd
+(
+Êﬂt32_t
+ *
+M
+, 
+uöt32_t
+ 
+numvÆs
+)
+
+103 
+i
+ = 0; i < 
+numvÆs
+; i++)
+
+105 
+M
+[
+i
+] = ()
+	`ønd
+(Ë/ ()(
+RAND_MAX
+);
+
+107 
+	}
+}
+
+109 
+	$m©rix_öô
+(
+Êﬂt32_t
+ *
+M
+, 
+uöt32_t
+ 
+cﬁs
+, uöt32_à
+rows
+, flﬂt32_à
+vÆ
+)
+
+111 
+i
+ = 0; i < 
+rows
+; i++)
+
+113 
+j
+ = 0; j < 
+cﬁs
+; j++)
+
+115 
+M
+[
+j
+ * 
+rows
+ + 
+i
+] = 
+vÆ
+;
+
+118 
+	}
+}
+
+120 
+boﬁ
+ 
+	$f32comp_nŸeq
+(
+Êﬂt32_t
+ 
+a
+, flﬂt32_à
+b
+)
+
+122 i‡(
+	`Ábs
+(
+a
+ - 
+b
+) < 0.000001)
+
+124  
+Ál£
+;
+
+126  
+åue
+;
+
+127 
+	}
+}
+
+129 
+boﬁ
+ 
+	$m©rix_comp
+(
+Êﬂt32_t
+ *
+A
+, flﬂt32_à*
+B
+, 
+uöt32_t
+ 
+rows
+, uöt32_à
+cﬁs
+)
+
+131 
+Êﬂt32_t
+ 
+a
+;
+
+132 
+Êﬂt32_t
+ 
+b
+;
+
+133 
+i
+ = 0; i < 
+rows
+; i++)
+
+135 
+j
+ = 0; j < 
+cﬁs
+; j++)
+
+137 
+a
+ = 
+A
+[
+rows
+ * 
+j
+ + 
+i
+];
+
+138 
+b
+ = 
+B
+[
+rows
+ * 
+j
+ + 
+i
+];
+
+140 i‡(
+	`f32comp_nŸeq
+(
+a
+, 
+b
+))
+
+142 
+	`¥ötf
+("i=%d, j=%d, A=%f, B=%f\n", 
+i
+, 
+j
+, 
+a
+, 
+b
+);
+
+143  
+Ál£
+;
+
+147  
+åue
+;
+
+148 
+	}
+}
+
+150 
+	$maö
+()
+
+152 
+i
+;
+
+153 
+uöt32_t
+ 
+n
+ = 
+BLOCK_SIZE
+;
+
+154 
+uöt32_t
+ 
+m
+ = 
+BLOCK_SIZE
+;
+
+155 
+uöt32_t
+ 
+k
+ = 
+BLOCK_SIZE
+;
+
+157 
+Êﬂt32_t
+ 
+A
+[
+n
+ * 
+k
+];
+
+158 
+Êﬂt32_t
+ 
+B
+[
+k
+ * 
+m
+];
+
+159 
+Êﬂt32_t
+ 
+C
+[
+n
+ * 
+m
+];
+
+160 
+Êﬂt32_t
+ 
+D
+[
+n
+ * 
+m
+];
+
+162 
+boﬁ
+ 
+c_eq_asm
+;
+
+163 
+boﬁ
+ 
+c_eq_√⁄
+;
+
+165 
+	`m©rix_öô_ønd
+(
+A
+, 
+n
+ * 
+k
+);
+
+166 
+	`m©rix_öô_ønd
+(
+B
+, 
+k
+ * 
+m
+);
+
+167 
+	`m©rix_öô
+(
+C
+, 
+n
+, 
+m
+, 0);
+
+169 
+	`¥ötf
+("A[] data:\n");
+
+170 
+	`¥öt_m©rix
+(
+A
+, 
+m
+, 
+k
+);
+
+172 
+	`¥ötf
+("B[] data:\n");
+
+173 
+	`¥öt_m©rix
+(
+B
+, 
+m
+, 
+k
+);
+
+176 
+i
+ = 0; i < 
+LOOP
+; i++)
+
+177 
+	`m©rix_mu…ùly_c
+(
+A
+, 
+B
+, 
+C
+, 
+n
+, 
+m
+, 
+k
+);
+
+178 
+	`¥ötf
+("CÑesult:\n");
+
+179 
+	`¥öt_m©rix
+(
+C
+, 
+n
+, 
+m
+);
+
+181 
+i
+ = 0; i < 
+LOOP
+; i++)
+
+182 
+	`m©rix_mu…ùly_4x4_asm
+(
+A
+, 
+B
+, 
+D
+);
+
+183 
+	`¥ötf
+("asmÑesult:\n");
+
+184 
+	`¥öt_m©rix
+(
+D
+, 
+n
+, 
+m
+);
+
+186 
+c_eq_√⁄
+ = 
+	`m©rix_comp
+(
+C
+, 
+D
+, 
+n
+, 
+m
+);
+
+187 
+	`¥ötf
+("AsmÉquÆÅÿC: %s\n", 
+c_eq_√⁄
+ ? "yes" : "no");
+
+188 
+	`¥ötf
+("===============================\n");
+
+189 
+	}
+}
+
 	@
 1
 .
 0
-30
-1013
+31
+1043
 algorithm/graph/310.Minimum_Height_Tree/bfs.cpp
 algorithm/graph/332.Reconstruct Itinerary/greedy_dfs.cpp
 algorithm/graph/399.Evaluate_devision/bfs.cpp
@@ -19895,3 +20529,4 @@ performance/s-tree/stree.c
 performance/strlen/main.c
 performance/strlen/strlen.c
 performance/strlen/strlen.h
+performance/sve/matrix/main.c

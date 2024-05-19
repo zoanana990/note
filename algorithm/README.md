@@ -27,7 +27,7 @@ There are several points in the video:
 - [ ] [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/) `medium`
 - [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/description/) `medium`
 - [ ] [134. Gas Station](https://leetcode.com/problems/gas-station/description/)  `medium`
-- [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)  `medium`
+- [ ] [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)  `medium`, **fail**
 - [x] [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/), **fail**  `medium`
 - [x] [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)  `medium`
 
@@ -68,10 +68,10 @@ There are several points in the video:
 > This type of subject are fixed
 - [ ] [30. Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/)
 - [x] [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/), **example**
-- [ ] [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)
+- [x] [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)
 - [x] [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 - [x] [567. Permutation in String](https://leetcode.com/problems/permutation-in-string/description/)
-
+- [x] [395. Longest Substring with At Least K Repeating Characters](https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/description/), **fail**, divide and conquer is better
 
 ### Prefix Sum
 - [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/), "prefix sum", **fail**
@@ -93,6 +93,7 @@ There are several points in the video:
 - [x] [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)
 - [x] [1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/)
 - [x] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+- [x] [81. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
 - [ ] [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/)
 - [ ] [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 
