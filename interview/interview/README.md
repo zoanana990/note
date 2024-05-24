@@ -258,16 +258,424 @@ Direct memory access, 另外一個 bus master, 可以用來搬運資料用的，
 ![](birisc-v.png)
 
 ### Program Counter
+這個階段 CPU 是用來獲取 program counter 的，在 biRISC-V 中可以利用
 
+```verilog
+parameter SUPPORT_BRANCH_PREDICTION = 1
+```
+
+決定是否使用分支預測，如果不使用分支預測的話，獲取到的指令永遠是 `program counter + 8`
+```verilog
+begin: NO_BRANCH_PREDICTION
+
+assign next_pc_f_o    = {pc_f_i[31:3],3'b0} + 32'd8;
+assign next_taken_f_o = 2'b0;
+
+end
+```
+
+接下來我們看一下分支預測會做什麼事吧，首先需要將分之預測分為兩種：
+1. 有條件的跳，例如：`bne`, `beq`，`BHT, BTB` 管分支預測
+2. 沒有條件的跳，例如：`jal`, `jalr`，`RAS` 只管函數跳轉 (function call, return)
+
+#### RAS (Return Address Stack)
+RAS 主要用在非條件的跳轉，例如函式、回傳值等等，例如：
+```verilog
+always @ *
+begin
+    ras_index_real_r = ras_index_real_q;
+
+    if (branch_request_i & branch_is_call_i)
+        ras_index_real_r = ras_index_real_q + 1;
+    else if (branch_request_i & branch_is_ret_i)
+        ras_index_real_r = ras_index_real_q - 1;
+end
+```
+只要是函式跳轉則 `index + 1` 如果是回傳則 `index - 1`
+```c++
+// On a call push return address onto RAS stack (current PC + 4)
+else if (branch_request_i & branch_is_call_i)
+begin
+    ras_stack_q[ras_index_r] <= branch_source_i + 32'd4;
+    ras_index_q              <= ras_index_r;
+end
+// On a call push return address onto RAS stack (current PC + 4)
+else if (ras_call_pred_w & pc_accept_i)
+begin
+    ras_stack_q[ras_index_r] <= (btb_upper_w ? (pc_f_i | 32'd4) : pc_f_i) + 32'd4;
+    ras_index_q              <= ras_index_r;
+end
+// Return - pop item from stack
+else if ((ras_ret_pred_w & pc_accept_i) || (branch_request_i & branch_is_ret_i))
+begin
+    ras_index_q              <= ras_index_r;
+end
+```
+上面這段程式碼則會針對有沒有進行分支預測、分支預測的結果決定是否要儲存 `program counter`
+
+#### GSHARE
+Gshare 使用的是全域的分之預測結果，可以用下面這個 flag 進行開關
+```verilog
+parameter GSHARE_ENABLE    = 0
+```
+
+如果這個 flag 有開的話 BHT 會優先使用 gshare 的預測結果
+```verilog
+reg [1:0]                    bht_sat_q[NUM_BHT_ENTRIES-1:0];
+
+wire [NUM_BHT_ENTRIES_W-1:0] bht_wr_entry_w = GSHARE_ENABLE ? gshare_wr_entry_w : branch_source_i[2+NUM_BHT_ENTRIES_W-1:2];
+wire [NUM_BHT_ENTRIES_W-1:0] bht_rd_entry_w = GSHARE_ENABLE ? gshare_rd_entry_w : {pc_f_i[3+NUM_BHT_ENTRIES_W-2:3],btb_upper_w};
+```
+
+gshare 的算法是使用 program counter 的一部分和全域歷史緩衝區進行互斥運算得到 predict table 的索引
+```verilog
+wire [NUM_BHT_ENTRIES_W-1:0] gshare_wr_entry_w = (branch_request_i ? global_history_real_q : global_history_q) ^ branch_source_i[2+NUM_BHT_ENTRIES_W-1:2];
+wire [NUM_BHT_ENTRIES_W-1:0] gshare_rd_entry_w = global_history_q ^ {pc_f_i[3+NUM_BHT_ENTRIES_W-2:3],btb_upper_w};
+```
+
+#### BHT (Branch History Table)
+上面講到，在 biriscv 中如果選用了 gshare 就不會用 bht 的結果，bht 也是利用 program counter 的一部分當作索引
+
+這些索引都會找到
+```verilog
+reg [1:0] bht_sat_q[NUM_BHT_ENTRIES-1:0];
+```
+
+這邊的分支預測方式是利用 2 bit 當作 branch taken 或是 branch not taken 的根據
+```txt
+3: strong taken
+2: taken
+1: not taken
+0: strong not taken
+```
+我們可以看到 source code 也是這樣撰寫的
+```verilog
+else if (branch_is_taken_i && bht_sat_q[bht_wr_entry_w] < 2'd3)
+    bht_sat_q[bht_wr_entry_w] <= bht_sat_q[bht_wr_entry_w] + 2'd1;
+else if (branch_is_not_taken_i && bht_sat_q[bht_wr_entry_w] > 2'd0)
+    bht_sat_q[bht_wr_entry_w] <= bht_sat_q[bht_wr_entry_w] - 2'd1;
+```
+
+#### BTB (Branch Target Buffer)
+利用 program counter 儲存他們的跳躍目標位置
+```verilog
+reg [31:0]  btb_pc_q[NUM_BTB_ENTRIES-1:0];
+reg [31:0]  btb_target_q[NUM_BTB_ENTRIES-1:0];
+```
+
+如果分之預測到 branch hit 的話，更新 branch target program counter
+```verilog
+// Hit - update entry
+else if (btb_hit_r)
+begin
+    btb_pc_q[btb_wr_entry_r]     <= branch_source_i;
+    if (branch_is_taken_i)
+        btb_target_q[btb_wr_entry_r] <= branch_pc_i;
+    btb_is_call_q[btb_wr_entry_r]<= branch_is_call_i;
+    btb_is_ret_q[btb_wr_entry_r] <= branch_is_ret_i;
+    btb_is_jmp_q[btb_wr_entry_r] <= branch_is_jmp_i;
+end
+```
+如果沒有預測到的話，需要把一個 index 的值換掉
+```verilog
+// Miss - allocate entry
+else if (btb_miss_r)
+begin
+    btb_pc_q[btb_wr_alloc_w]     <= branch_source_i;
+    btb_target_q[btb_wr_alloc_w] <= branch_pc_i;
+    btb_is_call_q[btb_wr_alloc_w]<= branch_is_call_i;
+    btb_is_ret_q[btb_wr_alloc_w] <= branch_is_ret_i;
+    btb_is_jmp_q[btb_wr_alloc_w] <= branch_is_jmp_i;
+end
+```
+
+替換的策略會使用 lfsr 進行
+```verilog
+biriscv_npc_lfsr
+#(
+    .DEPTH(NUM_BTB_ENTRIES)
+   ,.ADDR_W(NUM_BTB_ENTRIES_W)
+)
+u_lru
+(
+     .clk_i(clk_i)
+    ,.rst_i(rst_i)
+
+    ,.hit_i(btb_valid_r)
+    ,.hit_entry_i(btb_entry_r)
+
+    ,.alloc_i(btb_miss_r)
+    ,.alloc_entry_o(btb_wr_alloc_w)
+);
+```
+
+lfsr 替換的策略是將 program counter 去互斥一個值得到 index
+```verilog
+always @ (posedge clk_i or posedge rst_i)
+if (rst_i)
+    lfsr_q <= INITIAL_VALUE;
+else if (alloc_i)
+begin
+    if (lfsr_q[0])
+        lfsr_q <= {1'b0, lfsr_q[15:1]} ^ TAP_VALUE;
+    else
+        lfsr_q <= {1'b0, lfsr_q[15:1]};
+end
+
+assign alloc_entry_o = lfsr_q[ADDR_W-1:0];
+```
 
 ### Instruction Fetch
+instruction fetch stage 裡面做的事有幾個：
+1. 從 icache 中撈指令
+2. 當分支跳轉的時候要更新 program counter 的值並且更新指令
+3. 處理 icache 的讀取、失效和刷新
+4. 檢測並提取指令過程中的錯誤
 
+當然，我們必須考慮到 mmu 的情況
+```verilog
+// riscv_core.v
+u_frontend
+(
+    // Inputs
+     .clk_i(clk_i)
+    ,.rst_i(rst_i)
+    ,.icache_accept_i(mmu_ifetch_accept_w)
+    ,.icache_valid_i(mmu_ifetch_valid_w)
+    ,.icache_error_i(mmu_ifetch_error_w)
+    ,.icache_inst_i(mmu_ifetch_inst_w)
+...
+);
+
+...
+biriscv_mmu
+#(
+     .MEM_CACHE_ADDR_MAX(MEM_CACHE_ADDR_MAX)
+    ,.SUPPORT_MMU(SUPPORT_MMU)
+    ,.MEM_CACHE_ADDR_MIN(MEM_CACHE_ADDR_MIN)
+)
+u_mmu
+    // Outputs
+    ,.fetch_in_accept_o(mmu_ifetch_accept_w)
+    ,.fetch_in_valid_o(mmu_ifetch_valid_w)
+    ,.fetch_in_error_o(mmu_ifetch_error_w)
+    ,.fetch_in_inst_o(mmu_ifetch_inst_w)
+```
+#### instruction fetch
+
+
+
+#### mmu 的運作方式
+如果沒有 mmu 的話，則 mmu 的 output = input
+
+mmu 主要的作用就是將 virtual address 轉乘 physical address，其中包含兩個主要的元件：
+1. translation walk unit (twu)
+2. translation lookaside buffer (tlb)
+
+twu 是用來走訪 page table 的，而 tlb 是用來加速 virtual address 和 physical address 的轉換。
+
+先從基本的開始說起 satp, Supervisor Address Translation and Protection 總共有三個 field:
+1. mode: 1: Page-based 32-bit virtual addressing, 0: no translation
+2. asid: address space id
+3. ppn: 紀錄 page table 的 physical page number
+
+```verilog
+// Global enable
+wire        vm_enable_w = satp_i[`SATP_MODE_R];
+wire [31:0] ptbr_w      = {satp_i[`SATP_PPN_R], 12'b0};
+```
+可以看到 `vm_enable_w` 就是用來看 `satp_i` 的第 31 bit，而 page table 的記憶體實體位置由 ptbr_w 定義。page table 有多個級別，可以通過一級一級的查詢找到對應的 page table entry
+
+而 twu 也是使用 `ptbr_w` 開始 page table 的走訪
+```verilog
+// TLB miss, walk page table
+if (state_q == STATE_IDLE && (itlb_miss_w || dtlb_miss_w))
+begin
+    pte_addr_q  <= ptbr_w + {20'b0, request_addr_w[31:22], 2'b0};
+    virt_addr_q <= request_addr_w;
+    dtlb_req_q  <= dtlb_miss_w;
+
+    state_q     <= STATE_LEVEL_FIRST;
+end
+// First level (4MB superpage)
+else if (state_q == STATE_LEVEL_FIRST && resp_valid_w)
+begin
+    // Error or page not present
+    if (resp_error_w || !resp_data_w[`PAGE_PRESENT])
+    begin
+        pte_entry_q <= 32'b0;
+        state_q     <= STATE_UPDATE;
+    end
+    // Valid entry, but another level to fetch
+    else if (!(resp_data_w[`PAGE_READ] || resp_data_w[`PAGE_WRITE] || resp_data_w[`PAGE_EXEC]))
+    begin
+        pte_addr_q  <= {resp_data_w[29:10], 12'b0} + {20'b0, request_addr_w[21:12], 2'b0};
+        state_q     <= STATE_LEVEL_SECOND;
+    end
+    // Valid entry, actual valid PTE
+    else
+    begin
+        pte_entry_q <= ((pte_ppn_w | {22'b0, request_addr_w[21:12]}) << `MMU_PGSHIFT) | {22'b0, pte_flags_w};
+        state_q     <= STATE_UPDATE;
+    end
+end
+// Second level (4KB page)
+else if (state_q == STATE_LEVEL_SECOND && resp_valid_w)
+begin
+    // Valid entry, final level
+    if (resp_data_w[`PAGE_PRESENT])
+    begin
+        pte_entry_q <= (pte_ppn_w << `MMU_PGSHIFT) | {22'b0, pte_flags_w};
+        state_q     <= STATE_UPDATE;
+    end
+    // Page fault
+    else
+    begin
+        pte_entry_q <= 32'b0;
+        state_q     <= STATE_UPDATE;
+    end
+end
+else if (state_q == STATE_UPDATE)
+begin
+    state_q    <= STATE_IDLE;
+end
+```
+假設 tlb miss 就會開始走訪 page table，一開始會先獲取 page table 的基底位置之後開始走訪第一級的 page table 和第二級的 page table
+
+在 mmu 裡面有兩個 tlb, itlb 和 dtlb。當一個虛擬地址在 tlb 找到對應的 physical address 的時候就會發生 tlb hit 不然會發生 tlb miss，發生 tlb miss 的時候 twu 就開始出動
+
+#### icache 的運作方式
+biriscv 實作 16kByte 的 icache，使用 2 way associate 的方式，也就是每一個 set 都是 8kB，總共有 256 個 cache line 每一個 cache line 為 32 byte
+
+```verilog
+// cache line 的 index
+localparam ICACHE_NUM_LINES          = 256;
+localparam ICACHE_LINE_ADDR_W        = 8;
+
+// 每一個 cache line 的 sizw
+localparam ICACHE_LINE_SIZE_W        = 5;
+localparam ICACHE_LINE_SIZE          = 32;
+```
+
+icache 總共有六個部分：
+1. icache address 分解
+2. icache lookup
+3. cache hit
+4. cache miss
+5. replacement policy
+6. status
+
+##### address 分解
+```verilog
+// Tag addressing and match value, find cache line
+wire [ICACHE_TAG_REQ_LINE_W-1:0] req_line_addr_w  = req_pc_i[`ICACHE_TAG_REQ_RNG];
+
+// compare tag address
+wire [ICACHE_TAG_CMP_ADDR_W-1:0] req_pc_tag_cmp_w = lookup_addr_q[`ICACHE_TAG_CMP_ADDR_RNG];
+```
+
+檢查 valid bit 和 tag 是否有效
+```verilog
+icache_tag_ram
+u_tag1
+(
+  .clk_i(clk_i),
+  .rst_i(rst_i),
+  .addr_i(tag_addr_r),
+  .data_i(tag_data_in_r),
+  .wr_i(tag1_write_r),
+  .data_o(tag1_data_out_w)
+);
+
+wire                           tag1_valid_w     = tag1_data_out_w[CACHE_TAG_VALID_BIT];
+wire [CACHE_TAG_ADDR_BITS-1:0] tag1_addr_bits_w = tag1_data_out_w[`CACHE_TAG_ADDR_RNG];
+
+// Tag hit?
+wire                           tag1_hit_w = tag1_valid_w ? (tag1_addr_bits_w == req_pc_tag_cmp_w) : 1'b0;
+```
+
+##### 狀態機
+```verilog
+localparam STATE_FLUSH       = 2'd0; // cache flush
+localparam STATE_LOOKUP      = 2'd1; // cache hit?
+localparam STATE_REFILL      = 2'd2; // cache miss, load data from ram
+localparam STATE_RELOOKUP    = 2'd3; // load complete, re-lookup
+```
+
+##### cache replacement policy
+```verilog
+// Using random replacement policy - this way we cycle through the ways
+// when needing to replace a line.
+always @ (posedge clk_i or posedge rst_i)
+if (rst_i)
+    replace_way_q <= 0;
+else if (axi_rvalid_i && axi_rlast_i)
+    replace_way_q <= replace_way_q + 1;
+```
+
+#### skid buffer
+避免在無法接收指令時將已經獲取的指令丟失用的
+
+當 output 指令有效，但是這個時候無法接收新指令時就會將已經獲取的指令放到 skid buffer 並將 skid buffer 的 valid 設為 1
+```verilog
+// Instruction output back-pressured - hold in skid buffer
+else if (fetch_valid_o && !fetch_accept_i)
+begin
+    skid_valid_q  <= 1'b1;
+    skid_buffer_q <= {fetch_fault_page_o, fetch_fault_fetch_o, fetch_pred_branch_o, fetch_pc_o, fetch_instr_o};
+end
+else
+```
+當 skid_valid_q 為 1 的時候必須先處理 skid buffer 裡面的指令
+```verilog
+assign fetch_valid_o       = (icache_valid_i || skid_valid_q) & !fetch_resp_drop_w;
+assign fetch_pc_o          = skid_valid_q ? skid_buffer_q[95:64] : {pc_d_q[31:3],3'b0};
+assign fetch_instr_o       = skid_valid_q ? skid_buffer_q[63:0]  : icache_inst_i;
+assign fetch_pred_branch_o = skid_valid_q ? skid_buffer_q[97:96] : pred_d_q;
+```
+當然，skid buffer 裡面也可以把 page fault 記下來
+```verilog
+// Faults
+assign fetch_fault_fetch_o = skid_valid_q ? skid_buffer_q[98] : icache_error_i;
+assign fetch_fault_page_o  = skid_valid_q ? skid_buffer_q[99] : icache_page_fault_i;
+```
 ### Instruction Decode
+
 
 ### Issue
 
-### Execution stage 1
+#### dual issue
+dual issue 的條件：
+```verilog
+// Is this combination of instructions possible to execute concurrently.
+// This excludes result dependencies which may also block secondary execution.
+wire dual_issue_ok_w =   enable_dual_issue_w &&  // Second pipe switched on
+                         pipe1_ok_w &&           // Instruction 2 is possible on second exec unit
+                        (((issue_a_exec_w | issue_a_lsu_w | issue_a_mul_w) && issue_b_exec_w)   ||
+                         ((issue_a_exec_w | issue_a_lsu_w | issue_a_mul_w) && issue_b_branch_w) ||
+                         ((issue_a_exec_w | issue_a_mul_w) && issue_b_lsu_w)                    ||
+                         ((issue_a_exec_w | issue_a_lsu_w) && issue_b_mul_w)
+                         ) && ~take_interrupt_i;
+```
 
-### Execution stage 2
+範例 [biriscv note]()
+```verilog
+80000284 <bss_clear>:
+80000284:	028000ef    jal	ra,800002ac <init>
+80000288:	80000537    lui	a0,0x80000
+8000028c:	02050513    addi	a0,a0,32 # 80000020 <_end+0xffffd1d0>
+80000290:	00052503    lw	a0,0(a0)
+80000294:	800005b7    lui	a1,0x80000
+80000298:	02458593    addi	a1,a1,36 # 80000024 <_end+0xffffd1d4>
+8000029c:	388000ef    jal	ra,80000624 <main>
+```
 
-### Write back
+#### alu
+
+#### multiply (MUL)
+
+#### load/store unit (LSU)
+
+#### Control and status register (CSR)
+
+#### 
