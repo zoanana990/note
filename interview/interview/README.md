@@ -602,6 +602,100 @@ localparam STATE_REFILL      = 2'd2; // cache miss, load data from ram
 localparam STATE_RELOOKUP    = 2'd3; // load complete, re-lookup
 ```
 
+狀態機的關係：
+`STATE_FLUSH`
+- 一開始的狀態或收到刷新指令的時候就會變成 `STATE_FLUSH`
+- 刷新完之後轉乘 `STATE_LOOKUP`
+
+接下來看程式碼怎麼做的：
+```verilog
+reg tag1_write_r;
+always @ *
+begin
+    tag1_write_r = 1'b0;
+
+    // Cache flush
+    if (state_q == STATE_FLUSH)
+        tag1_write_r = 1'b1;
+    // Line refill
+    else if (state_q == STATE_REFILL)
+        tag1_write_r = axi_rvalid_i && axi_rlast_i && (replace_way_q == 1);
+end
+
+// Tag RAM address
+always @ *
+begin
+    tag_addr_r = flush_addr_q;
+
+    // Cache flush
+    if (state_q == STATE_FLUSH)
+        tag_addr_r = flush_addr_q;
+    // Line refill
+    else if (state_q == STATE_REFILL || state_q == STATE_RELOOKUP)
+        tag_addr_r = lookup_addr_q[`ICACHE_TAG_REQ_RNG];
+    // Lookup
+    else
+        tag_addr_r = req_line_addr_w;
+end
+```
+
+接下來就是把這些值丟到 `icache_tag_ram` 這個模組進行處理：
+```
+icache_tag_ram
+u_tag1
+(
+  .clk_i(clk_i),
+  .rst_i(rst_i),
+  .addr_i(tag_addr_r),
+  .data_i(tag_data_in_r),
+  .wr_i(tag1_write_r),
+  .data_o(tag1_data_out_w)
+);
+```
+
+這裡會發現如果需要 flush 的話會把 `tag1_write_r` 的值填 1 之後 `icache_tag_ram` 會把記憶體重新載入
+
+reg [19:0]   ram [255:0] /*verilator public*/;
+reg [19:0]   ram_read_q;
+
+```verilog
+// Synchronous write
+always @ (posedge clk_i)
+begin
+    if (wr_i)
+        ram[addr_i] <= data_i;
+    ram_read_q <= ram[addr_i];
+end
+
+assign data_o = ram_read_q;
+```
+
+做完之後更新狀態
+```verilog
+STATE_FLUSH :
+begin
+    if (invalidate_q)
+        next_state_r = STATE_LOOKUP;
+    else if (flush_addr_q == {(ICACHE_TAG_REQ_LINE_W){1'b1}})
+        next_state_r = STATE_LOOKUP;
+end
+```
+
+`STATE_LOOKUP`
+- 需要快取查找的時候處於 `STATE_LOOKUP`
+- cache hit, 繼續在`STATE_LOOKUP`
+- cache miss 需要轉到 `STATE_REFILL`
+- 需要 flush 的時候需要轉到 `STATE_FLUSH` 的狀態
+
+`STATE_REFILL`
+- 當 cache 需要填充新的指令的時候放到處於 `STATE_REFILL`
+- 在這個狀態的時候 cache 會從 memory 中讀取指令並填充到 cache line 中
+- 當填充完成之後轉換到 `STATE_RELOOKUP` 狀態
+
+`STATE_RELOOKUP`
+- 當填充完成之後，需要重新查找指令，處於 `STATE_RELOOKUP` 的狀態
+- 在這個狀態下，cache 會進行重新查找，找完之後會回到 `STATE_LOOKUP` 狀態中
+
 ##### cache replacement policy
 ```verilog
 // Using random replacement policy - this way we cycle through the ways
@@ -640,9 +734,61 @@ assign fetch_fault_fetch_o = skid_valid_q ? skid_buffer_q[98] : icache_error_i;
 assign fetch_fault_page_o  = skid_valid_q ? skid_buffer_q[99] : icache_page_fault_i;
 ```
 ### Instruction Decode
+- decode 的階段主要是將 fetch 階段拿到的指令進行解碼，並且產生對應的控制訊號，例如：alu, memory access, branch prediction 等等
+- 根據分支預測結果決定是否需要刷新 pipeline 並重新取指
+
+```verilog
+parameter EXTRA_DECODE_STAGE
+```
+這個參數決定 decode stage 需不需要一個額外的時間週期，使用 `EXREA_DECODE_STAGE` 
+- 作用
+  - 增加一個 cycle
+  - 第一個週期將指令存到 buffer 第二個週期將 buffer 中的指令讀出來解碼
+- 優點
+  - 每個 cycle 的動作變少，cpu 可以提高頻率
+- 缺點
+  - 增加延遲、設計更複雜
+
+```verilog
+    reg [100:0] fetch_buffer_q;
+
+    always @ (posedge clk_i or posedge rst_i)
+    if (rst_i)
+        fetch_buffer_q <= 101'b0;
+    else if (branch_request_i)
+        fetch_buffer_q <= 101'b0;
+    else if (!fetch_in_valid_w || fetch_in_accept_o)
+        fetch_buffer_q <= {fetch_in_fault_page_i, fetch_in_fault_fetch_i, fetch_in_pred_branch_i, fetch_in_instr_i, fetch_in_pc_i, fetch_in_valid_i};
+
+    assign {fetch_in_fault_page_w, 
+            fetch_in_fault_fetch_w, 
+            fetch_in_pred_branch_w, 
+            fetch_in_instr_raw_w, 
+            fetch_in_pc_w, 
+            fetch_in_valid_w} = fetch_buffer_q;
+
+```
+
+不使用 `EXREA_DECODE_STAGE` 的優點和缺點：
+- 設計較簡單
+- 可能會遇到違反時序的問題
+
+#### fetch fifo
+在 fetch stage 和 decode stage 中作緩衝
+1. 按照順序給 fifo 確保他們按照順序解碼
+2. 緩解 instruction fetch stage 和 decode stage 的差異
+3. 當分支出現異常的時候需要提供必要的機制來無效指令，確保數據完整
+
+當指令從 fifo 中出來之後，會將指令丟到 decoder1 和 decoder2 中，最後解碼完的指令會送到 issue stage 裡面
 
 
 ### Issue
+- 在這個階段，CPU 主要檢查 issue_valid_i 和 issue_accept_i 訊號決定是不是有指令要進入 pipeline，並且根據 issue_*_i 來判斷指令的類型
+- 根據 issue_stall_i 的訊號來決定是不是需要將指令暫停發射，如果需要暫停、則 E1 和 E2 的狀態不變
+
+如果遇到 hazard 則有 bypass 的方式解決。如果無法解決，則會將 pipeline stall 例如除法和 csr 指令
+
+要執行 dual issue 必須先考慮有沒有 hazard 發生與硬體資源夠不夠，
 
 #### dual issue
 dual issue 的條件：
@@ -670,12 +816,10 @@ wire dual_issue_ok_w =   enable_dual_issue_w &&  // Second pipe switched on
 8000029c:	388000ef    jal	ra,80000624 <main>
 ```
 
-#### alu
+#### exec
 
 #### multiply (MUL)
 
 #### load/store unit (LSU)
 
 #### Control and status register (CSR)
-
-#### 
