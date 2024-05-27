@@ -1,5 +1,83 @@
 # 面試猜題
 
+## 履歷
+### 工作經驗問題
+在 airoha.inc 任職近兩年，主要負責的工作有下列幾項：
+1. freertos 和 linux 的 i2c, gpio 驅動程式開發，在 linux 中是將以前的驅動重新開發，去除掉前人的技術債並且將驅動程式的街口和 linux 對接，增加程式碼的可移植性，在開發的過程中發現 linux 裡面有一個 API 有多餘的操作，有對 linux kernel 進行修改，修改的內容也在 1 月的時候被採用。在 freertos 的驅動程式則是去除冗余的 database 降低全域變數的使用以及初始化的必要性。
+2. SDK 的整合，過往我們的程式碼都是一顆晶片一包 SDK 但是這對於維護是一大筆負擔，因此我將 SDK 整合成一包並且重新設計檔案的位置和 Makefile 的寫法，使得整包程式碼可以自由選擇編譯的目標與大幅度降低維護成本。此外，重新設計的 Makefile dependency 將更為明確，可以引入多個 worker 的機制 (-j4) 增加編譯速度
+3. IC 驗證，驗證 FPGA 和 ASIC ip 的功能正確性。驗證 gpio, pin-mux, i2c, bus 的功能。其中 CPU bus 驗證了
+    - illegal access：用來通知 CPU 某一個地址被存取了
+    - bus: 驗證 memory bus 和 peripheral bus 的 timeout illegal access, unalignment access 的行為
+    - pin-mux 的驗證，驗證到輸入的時候資料會流入各個 IP，硬體 bug
+    - debug module，驗證 debug module 的基本功能，包含寫 gdb script 增加 watch point, break point, command, backtrace 等等
+    - cache test, 將資料讀取，對資料做編輯，在寫回去看看需要花多少 cycle。利用 performance counter 進行量測。
+    - branch target buffer 驗證，寫一個組合語言使得他可以跳到想要的標籤上。
+4. debug 機制開發
+    - 可以利用 illegal access 和改 bin 檔的方式將 debug 函數打開，監測全域變數、heap 和 stack 是否有違規操作的行為
+    - 將 printf 的 log 燒錄到 flash 中，當出現異常的時候利用 tftp 將 log 送到電腦，適用於沒有 uart 的晶片
+    - gdb script
+5. 增加 image 的燒錄速度，image 燒錄的過程有下面幾步：
+    1. 將資料傳到 mcu 上
+    2. 擦除 flash block
+    3. 寫入 flash
+   因此可以將擦除 block 的大小從 4KB 變成 64KB 這樣可以大幅度降低擦除時間，此外可以將傳送的方式加速，例如 xmodem 提升 uart 頻率、或是改為使用 tftp 傳送 image 等等
+6. 產測軟體開發
+   1. 測試硬體的系統性，先將硬體的網路口 loop back
+   2. 設定 vlan 或是 port matrix 將 cpu port 和端口的 port 做一個 group。例如：{cpu, 0}, {cpu, 1}, {cpu, 2} ...
+   3. 設定 link speed 和 an mode / force mode 使得 cpu port 和端口連接到了
+   4. 利用 pdma 將封包做起來之後打到端口，打到端口之後使用 mac 將端口輸出，因為已經進行 loopback 之後封包會送回來，mac 會將包的 head 拿掉之後 pdma 會把包送回 cpu port 之後來看看打的封包數量和收的數量是否相同以及內容是否相同。
+   5. 驗出一些 IC 有問題，此外協助驗證 FT 的測試 pattern 符合預期。
+7. auto test, 開發自動測試程式使得 driver 的行為符合預期
+
+### riscv emulator
+emulator 在讀取 image 的時候使用 fread, fopen 等標准函式庫，讀取之後將它存到 local memory buffer 這樣多了很多 copy 的時間，我使用 mmap 將 image 檔直接映射過去達成 zero copy 大幅降低程式碼的時間
+
+測試效能的程式碼：
+```c
+gettimeofday(&end, NULL);     // 行程啟動到結束的總時間
+getrusage(RUSAGE_SELF, &ru);  // 可以測出 user/kernel space 的 CPU 時間
+```
+
+### `strlen` 的效能
+原本使用的 `strlen` 是每一個 byte 去看是不是 `'\0'` 如果是的話則回傳長度
+但是其實可以用一個 word 直接偵測
+
+這時候就需要知道怎麼知道 overflow bit
+x & ~x = 0
+x & ~(x - 1) != 0 因為會有一些借位向下剪的項目
+x & ~(x - 1) & 0x80 可以把那些多餘的數字拿掉只觀察有沒有 0 的 overflow
+如果存在則代表有結尾字元存在，這個時候在比較每一個 byte 是不是 0 即可
+
+### 排序法
+```c
+void quickSort(int arr[], int low, int high, int threshold) {
+  if (low < high) {
+    if (high - low + 1 <= threshold) {
+      insertionSort(arr, low, high);
+    } else {
+      int pivot = partition(arr, low, high);
+      quickSort(arr, low, pivot - 1, threshold);
+      quickSort(arr, pivot + 1, high, threshold);
+    }
+  }
+}
+
+int partition(int arr[], int low, int high) {
+  int pivot = arr[high];
+  int i = (low - 1);
+
+  for (int j = low; j < high; j++) {
+    if (arr[j] <= pivot) {
+      i++;
+      swap(arr[i], arr[j]);
+    }
+  }
+
+  swap(arr[i + 1], arr[high]);
+  return (i + 1);
+}
+```
+
 ## 計算機結構
 1. 什麼是 cpu pipeline ? 他會遇到什麼樣的 hazard ? hazard 怎麼樣避免和解決
 2. 要怎麼樣提升 pipeline 的性能 ？
@@ -804,7 +882,7 @@ wire dual_issue_ok_w =   enable_dual_issue_w &&  // Second pipe switched on
                          ) && ~take_interrupt_i;
 ```
 
-範例 [biriscv note]()
+範例
 ```verilog
 80000284 <bss_clear>:
 80000284:	028000ef    jal	ra,800002ac <init>
@@ -816,10 +894,33 @@ wire dual_issue_ok_w =   enable_dual_issue_w &&  // Second pipe switched on
 8000029c:	388000ef    jal	ra,80000624 <main>
 ```
 
+這邊有兩組案例，一組是可以使用 dual issue 加速的另外一組則不行：
+第一組：read after write
+```verilog
+lui a0,0x80000
+addi a0,a0,32
+```
+第二組：可以分開獨立運作
+```verilog
+lw a0,0(a0)
+lui a1,0x80000
+```
+
 #### exec
+這個模組主要處理 ALU 運算、immediate 指令和分支預測的結果，會將結果即時更新到 program counter stage, fetch stage 和 decode stage。
 
 #### multiply (MUL)
 
+#### Divider (DIV)
+
 #### load/store unit (LSU)
 
+
 #### Control and status register (CSR)
+csr 的 branch 指的是中斷和異常，當中斷或是異常發生的時候 CPU 會去讀取 `mtvec` 暫存器中的地址，開始中斷或異常處理，這類的 branch 是由硬體觸發並不是由軟體觸發。
+
+一般的分支預測指的是條件是跳轉，例如：if-else 如果預測錯誤的話就會清空 pipeline 重新載入指令造成性能損失。
+
+兩者的差別在於觸發的方式不同
+
+接下來看一下如果異常出現的時候會長什麼樣子
