@@ -1,4 +1,4 @@
-cscope 15 $HOME/CODE/note               0000095457
+cscope 15 $HOME/CODE/note               0000097045
 	@algorithm/graph/310.Minimum_Height_Tree/bfs.cpp
 
 1 
@@ -5466,6 +5466,336 @@ c_eq_ÃÚ
 );
 
 243 
+	}
+}
+
+	@performance/neon/memcpy/benchmark.c
+
+1 
+	~<¬m_ÃÚ.h
+>
+
+2 
+	~<¡ddef.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<¡ršg.h
+>
+
+5 
+	~<¡dio.h
+>
+
+6 
+	~<time.h
+>
+
+9 *
+	$ÃÚ_memıy
+(*
+de¡
+, cÚ¡ *
+¤c
+, 
+size_t
+ 
+n
+) {
+
+10 
+ušt8_t
+ *
+d
+ = (ušt8_ˆ*)
+de¡
+;
+
+11 cÚ¡ 
+ušt8_t
+ *
+s
+ = (cÚ¡ ušt8_ˆ*)
+¤c
+;
+
+14 
+n
+ >= 16) {
+
+15 
+	`v¡1q_u8
+(
+d
+, 
+	`vld1q_u8
+(
+s
+));
+
+16 
+s
+ += 16;
+
+17 
+d
+ += 16;
+
+18 
+n
+ -= 16;
+
+22 
+n
+ > 0) {
+
+23 *
+d
+++ = *
+s
+++;
+
+24 
+n
+--;
+
+27  
+de¡
+;
+
+28 
+	}
+}
+
+31 *
+	$ÃÚ_mem£t
+(*
+s
+, 
+c
+, 
+size_t
+ 
+n
+) {
+
+32 
+ušt8_t
+ *
+d¡
+ = (ušt8_ˆ*)
+s
+;
+
+33 
+ušt8x16_t
+ 
+v®ue
+ = 
+	`vdupq_n_u8
+((
+ušt8_t
+)
+c
+);
+
+36 
+n
+ >= 16) {
+
+37 
+	`v¡1q_u8
+(
+d¡
+, 
+v®ue
+);
+
+38 
+d¡
+ += 16;
+
+39 
+n
+ -= 16;
+
+43 
+n
+ > 0) {
+
+44 *
+d¡
+++ = (
+ušt8_t
+)
+c
+;
+
+45 
+n
+--;
+
+48  
+s
+;
+
+49 
+	}
+}
+
+52 
+b’chm¬k
+(*(*
+memıy_func
+)(*, cÚ¡ *, 
+size_t
+), *(*
+mem£t_func
+)(*, , size_t)) {
+
+53 cÚ¡ 
+	gsize
+ = 1024ULL * 1024ULL * 1024ULL * 1024ULL;
+
+54 
+ušt8_t
+ *
+	g¤c
+ = 
+m®loc
+(
+size
+);
+
+55 
+ušt8_t
+ *
+	gd¡
+ = 
+m®loc
+(
+size
+);
+
+58 
+mem£t
+(
+¤c
+, 0xAA, 
+size
+);
+
+61 
+şock_t
+ 
+	g¡¬t
+ = 
+şock
+();
+
+62 
+memıy_func
+(
+d¡
+, 
+¤c
+, 
+size
+);
+
+63 
+şock_t
+ 
+	g’d
+ = 
+şock
+();
+
+64 
+´štf
+("memıyook %à£cÚds\n", ()(
+’d
+ - 
+¡¬t
+è/ 
+CLOCKS_PER_SEC
+);
+
+67 
+	g¡¬t
+ = 
+şock
+();
+
+68 
+mem£t_func
+(
+d¡
+, 0x55, 
+size
+);
+
+69 
+	g’d
+ = 
+şock
+();
+
+70 
+´štf
+("mem£ˆtook %à£cÚds\n", ()(
+’d
+ - 
+¡¬t
+è/ 
+CLOCKS_PER_SEC
+);
+
+72 
+ä“
+(
+¤c
+);
+
+73 
+ä“
+(
+d¡
+);
+
+76 
+	$maš
+() {
+
+77 
+	`´štf
+("Benchmarking standard functions...\n");
+
+78 
+	`b’chm¬k
+(
+memıy
+, 
+mem£t
+);
+
+80 
+	`´štf
+("\nBenchmarking NEON functions...\n");
+
+81 
+	`b’chm¬k
+(
+ÃÚ_memıy
+, 
+ÃÚ_mem£t
+);
+
+84 
 	}
 }
 
@@ -20497,8 +20827,8 @@ c_eq_ÃÚ
 1
 .
 0
-31
-1043
+32
+1079
 algorithm/graph/310.Minimum_Height_Tree/bfs.cpp
 algorithm/graph/332.Reconstruct Itinerary/greedy_dfs.cpp
 algorithm/graph/399.Evaluate_devision/bfs.cpp
@@ -20518,6 +20848,7 @@ features/malloc/main.c
 features/queue/list.h
 features/queue/queue.c
 performance/neon/matrix/main.c
+performance/neon/memcpy/benchmark.c
 performance/neon/rgb/main.c
 performance/qsort/hsort.c
 performance/qsort/isort.c

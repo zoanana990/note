@@ -1,5 +1,12 @@
 # 面試猜題
 
+## 面試考古題
+1. 如果 load store unit 在沒有考慮後續 data hazard 的情況下要怎麼增加性能降低等待時間？
+2. 什麼是亂序執行？什麼是暫存器重新命名？
+3. RAS 如果在下面的情況下可能會遇到 RAS 混亂情況要怎麼解決？如果處理器支援亂序執行的情況呢？
+4. 現在有一顆什麼規格都不知道的 CPU IP 要怎麼測出 add 指令的執行 cycle 數？要怎麼測出 lw 的 cycle 數？
+5. 要怎麼測出 cache 的大小？怎麼測出 cache 的 level 數？
+
 ## 履歷
 ### 工作經驗問題
 在 airoha.inc 任職近兩年，主要負責的工作有下列幾項：
@@ -906,6 +913,82 @@ lw a0,0(a0)
 lui a1,0x80000
 ```
 
+計分板決定 register 有沒有依賴性：
+```verilog
+always @ *
+begin
+    opcode_a_issue_r     = 1'b0;
+    opcode_b_issue_r     = 1'b0;
+    opcode_a_accept_r    = 1'b0;
+    opcode_b_accept_r    = 1'b0;
+    scoreboard_r         = 32'b0;
+    pipe1_mux_lsu_r      = 1'b0;
+    pipe1_mux_mul_r      = 1'b0;
+
+    // Execution units with >= 2 cycle latency
+    if (SUPPORT_LOAD_BYPASS == 0)
+    begin
+        if (pipe0_load_e2_w)
+            scoreboard_r[pipe0_rd_e2_w] = 1'b1;
+        if (pipe1_load_e2_w)
+            scoreboard_r[pipe1_rd_e2_w] = 1'b1;
+    end
+    if (SUPPORT_MUL_BYPASS == 0)
+    begin
+        if (pipe0_mul_e2_w)
+            scoreboard_r[pipe0_rd_e2_w] = 1'b1;
+        if (pipe1_mul_e2_w)
+            scoreboard_r[pipe1_rd_e2_w] = 1'b1;
+    end
+
+    // Execution units with >= 1 cycle latency (loads / multiply)
+    if (pipe0_load_e1_w || pipe0_mul_e1_w)
+        scoreboard_r[pipe0_rd_e1_w] = 1'b1;
+    if (pipe1_load_e1_w || pipe1_mul_e1_w)
+        scoreboard_r[pipe1_rd_e1_w] = 1'b1;
+
+    // Do not start multiply, division or CSR operation in the cycle after a load (leaving only ALU operations and branches)
+    if ((pipe0_load_e1_w || pipe0_store_e1_w || pipe1_load_e1_w || pipe1_store_e1_w ) && (issue_a_mul_w || issue_a_div_w || issue_a_csr_w))
+        scoreboard_r = 32'hFFFFFFFF;
+
+    // Stall - no issues...
+    if (lsu_stall_i || stall_w || div_pending_q || csr_pending_q)
+        ;
+    // Primary slot (lsu, branch, alu, mul, div, csr)
+    else if (opcode_a_valid_r &&
+        !(scoreboard_r[issue_a_ra_idx_w] || 
+          scoreboard_r[issue_a_rb_idx_w] ||
+          scoreboard_r[issue_a_rd_idx_w]))
+    begin
+        opcode_a_issue_r  = 1'b1;
+        opcode_a_accept_r = 1'b1;
+
+        if (opcode_a_accept_r && issue_a_sb_alloc_w && (|issue_a_rd_idx_w))
+            scoreboard_r[issue_a_rd_idx_w] = 1'b1;
+    end
+
+    // Stall - no issues...
+    if (lsu_stall_i || stall_w || div_pending_q || csr_pending_q)
+        ;
+    // Secondary Slot (lsu, branch, alu, mul)
+    else if (dual_issue_ok_w && opcode_b_valid_r && opcode_a_accept_r &&
+        !(scoreboard_r[issue_b_ra_idx_w] || 
+          scoreboard_r[issue_b_rb_idx_w] ||
+          scoreboard_r[issue_b_rd_idx_w]))
+    begin
+        opcode_b_issue_r  = 1'b1;
+        opcode_b_accept_r = 1'b1;
+        pipe1_mux_lsu_r   = issue_b_lsu_w;
+        pipe1_mux_mul_r   = issue_b_mul_w;
+
+        if (opcode_b_accept_r && issue_b_sb_alloc_w && (|issue_b_rd_idx_w))
+            scoreboard_r[issue_b_rd_idx_w] = 1'b1;
+    end    
+end
+```
+將有用到的暫存器標成 1 如果後面有任何用到的暫存器已經被標記成 1 的話則代表有資源衝不能 issue
+
+
 #### exec
 這個模組主要處理 ALU 運算、immediate 指令和分支預測的結果，會將結果即時更新到 program counter stage, fetch stage 和 decode stage。
 
@@ -924,3 +1007,50 @@ csr 的 branch 指的是中斷和異常，當中斷或是異常發生的時候 C
 兩者的差別在於觸發的方式不同
 
 接下來看一下如果異常出現的時候會長什麼樣子
+
+## risc-v 的中斷
+- CLINT, Core Local Interrupt: 局部中斷，目前僅定義 timer interrupt, software interrupt
+- PLIC, platform interrupt controller: 平台中斷，外部中斷全部接到這上面，外部設備全部都是外部中斷。
+
+CLINT 和 PLIC 的差別在 CLINT 沒有仲裁，只要一有中斷馬上響應。PLIC 需要一個仲裁 (arbitor) 知道誰先發生的誰的優先級比較高。
+
+
+## neon 指令
+最簡單的例子：`memcpy`
+```c
+void *neon_memcpy(void *dest, const void *src, size_t n) {
+    uint8_t *d = (uint8_t *)dest;
+    const uint8_t *s = (const uint8_t *)src;
+
+    // Copy in 128-bit (16-byte) chunks
+    while (n >= 16) {
+        vst1q_u8(d, vld1q_u8(s));
+        s += 16;
+        d += 16;
+        n -= 16;
+    }
+
+    // Copy remaining bytes
+    while (n > 0) {
+        *d++ = *s++;
+        n--;
+    }
+
+    return dest;
+}
+```
+編譯的時候要使用下面這個 flag:
+```Makefile
+CFLAGS = -O3 -mfpu=neon
+```
+
+最後得出的結果：
+```txt
+Benchmarking standard functions...
+memcpy took 0.000008 seconds
+memset took 0.000001 seconds
+
+Benchmarking NEON functions...
+memcpy took 0.000001 seconds
+memset took 0.000002 seconds
+```
