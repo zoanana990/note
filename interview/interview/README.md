@@ -2,10 +2,52 @@
 
 ## 面試考古題
 1. 如果 load store unit 在沒有考慮後續 data hazard 的情況下要怎麼增加性能降低等待時間？
-2. 什麼是亂序執行？什麼是暫存器重新命名？
-3. RAS 如果在下面的情況下可能會遇到 RAS 混亂情況要怎麼解決？如果處理器支援亂序執行的情況呢？
-4. 現在有一顆什麼規格都不知道的 CPU IP 要怎麼測出 add 指令的執行 cycle 數？要怎麼測出 lw 的 cycle 數？
-5. 要怎麼測出 cache 的大小？怎麼測出 cache 的 level 數？
+   - 加一個 FIFO 可以大幅度的降低等待時間，如果 FIFO 的容量越大可以將等待時間 pipeline 化
+    ```
+    1  2  3  4  5  6  7  8  9 ... 998 1000 1001
+    E1 E2 FIFO ......               G E2   WB
+       E1 E2 FIFO ......              G    E2   WB
+          E1 E2 FIFO ......                G    E2
+    ```
+    - 這時候的平均等待時間需要考慮 fifo 的長度
+2. 不支援壓縮指令的 biriscv 要怎麼改變 pipeline 硬體使他可以執行
+    - 在 decode 的階段加入一個 FIFO 做緩衝，一次取指還是一樣 64 bit 如果遇到不完整的指令就重新取指
+3. 什麼是亂序執行？什麼是暫存器重新命名？
+    - 亂序執行是在指令沒有相關性的情況下可以先執行後面的指令，考慮下面的例子
+    - 但是由於暫存器數 (architecture register) 非常少 因此會先在執行的時候將 rd 從 freelist 裡面命名成 physical register
+    ```
+    add x1, x2, x3 -> x1 = p1
+    lw x2, x4(4)   -> x2 = p2
+    add x1, x2, x3 -> x1 = p3 此時 x2 會變成 p2
+    ```
+4. RAS 如果在下面的情況下可能會遇到 RAS 混亂情況要怎麼解決？如果處理器支援亂序執行的情況呢？
+    - inorder: 回傳 RAS 的時候先不要 pop 出去，等 RAS top 到 execution 的時候在 pop
+    - out of order: 等到 head 指標指到 RAS top 的時候出去
+5. 現在有一顆什麼規格都不知道的 CPU IP 要怎麼測出 add 指令的執行 cycle 數？要怎麼測出 lw 的 cycle 數？
+    - 用很多個 dependency 的命令去做，以加法為例：
+    ```
+    perf
+    add x1, x0, x1
+    add x1, x0, x1
+    add x1, x0, x1
+    ...
+    perf
+    ```
+    以 lw 為例
+    ```
+    perf
+    lw x2, x1(0)
+    lw x1, x2(0)
+    ...
+    perf
+    ```
+6. 要怎麼測出 cache 的大小？怎麼測出 cache 的 level 數？請考慮 superscalar 處理器和 prefetcher 的影響
+    ```
+    從 0x8000_0000 開始讀直到出 cache 那個時候會有一個比較大的延遲。在 scuperscalar 的情況下一樣但是在 prefetcher 的情況下需要將存取的位置變成亂數
+    ```
+7. 什麼是 VIPT ?
+
+有上 linux patch
 
 ## 履歷
 ### 工作經驗問題
@@ -15,6 +57,7 @@
 3. IC 驗證，驗證 FPGA 和 ASIC ip 的功能正確性。驗證 gpio, pin-mux, i2c, bus 的功能。其中 CPU bus 驗證了
     - illegal access：用來通知 CPU 某一個地址被存取了
     - bus: 驗證 memory bus 和 peripheral bus 的 timeout illegal access, unalignment access 的行為
+    - 驗證到 interrupt 重複跳的問題
     - pin-mux 的驗證，驗證到輸入的時候資料會流入各個 IP，硬體 bug
     - debug module，驗證 debug module 的基本功能，包含寫 gdb script 增加 watch point, break point, command, backtrace 等等
     - cache test, 將資料讀取，對資料做編輯，在寫回去看看需要花多少 cycle。利用 performance counter 進行量測。
@@ -94,7 +137,7 @@ int partition(int arr[], int low, int high) {
 6. 什麼是 context switch? 什麼是 callee safe register? caller safe register
 7. 什麼是 cache? cache 又分為幾種？什麼是 cache coherence?
 8. 什麼是虛擬記憶體？為什麼要用虛擬記憶體？什麼是 page fault ?
-9. 什麼是 TLB?
+9. 什麼是 TLB? page table 可不可以存到 dcache 裡？
 10. 為什麼 cache 要考慮虛擬記憶體和實體記憶體？
 11. 什麼是 memory barrier? 比較 arm riscv 的區別
 12. 什麼是 DMA?
@@ -148,7 +191,7 @@ $Performance = \frac{time}{Program} = \frac{Instructions}{Program}\cdot\frac{cyc
     - 遇到了 RAW 怎麼辦
         - 等
         - bypass: 提前將運算結果拿來用
-        - speculate: 猜一個運算結果 (現在不常用)
+        - speculate: 猜一個運算結果 (現在不常用，在 out of order + superscalar 的情況下比較常用)
 5. control hazard: 下一個指令的執行會依據先前的運算結果
     - 兩種情況會遇到
     - 中斷發生了：遇到了管線全部清掉，讀取 interrupt handler 的 program counter
